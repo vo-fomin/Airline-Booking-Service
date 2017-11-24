@@ -1,0 +1,275 @@
+body{
+    background:lightgray;
+    position:relative;
+    padding-left:300px;
+    padding-bottom:160px;
+}
+#header{
+    width:100%;
+    height:90px;
+    z-index:2500;
+    padding-top:20px;
+    padding-left:120px;
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0, 0, 0, 0.8);
+    color:lightgray;
+}
+#logo{
+    position:absolute;
+    height:70px;
+    left:25px;
+    top:10px;
+    cursor:pointer;
+}
+.header-phones{
+    font-size:14px;
+    color:lightgray;
+}
+.header-item{
+    margin-left:13.5%;
+    color:lightgray;
+    font-size:20px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.header-item:hover{
+    transition: background-color 0.3s;
+    background-color:rgba(200, 200, 200, 0.2);
+}
+.gallery-item{
+    margin-top: 20px;
+    margin-left:17%;
+    display: inline-block;
+    float:left;
+}
+.gallery-item img{
+    height:125px;
+}
+.gallery-item p{
+    display:inline-block;
+    max-width:125px;
+    margin-top: 5px;
+    font-size:12px;
+    text-align: center;
+}
+#slider{
+    margin-top: 90px;
+    padding-top:10px;
+    padding-bottom:10px;
+    background: darkgray;
+}
+#gallery{
+    margin-top:10px;
+    height:230px;
+    border-top:solid black 1px;
+    border-bottom: solid black 1px;
+}
+.close{
+    position:absolute;
+    top:20px;
+    right:20px;
+}
+.container{
+    width:95%;
+}
+.item{
+    position:relative;
+    background: gray;
+}
+.description{
+    position:absolute;
+    font-weight: 500;
+    right:8%;
+    top:1%;
+    width:30%;
+}
+.left-panel{
+    padding-top: 10px;
+    left:0;
+    top:90px;
+    position:fixed;
+    z-index:2000;
+    width:300px;
+    height:100%;
+    background:white;
+    overflow-y:scroll;
+    overflow-x:hidden;
+}
+.menu-level{
+    margin-left: 10px;
+}
+.menu-item{
+    margin-left: 10px;
+    display: block;
+    max-width:150px;
+}
+
+.contentImage{
+    display:block;
+    position:absolute;
+    left:0;
+    right:0;
+    margin:auto;
+}
+
+#book{
+    height:90%;
+
+}
+#plane{
+    z-index:10000;
+    margin-bottom:10px;
+    margin-left: 5%;
+    width:90%;
+    height:65%;
+    border-radius:6px;
+    border:solid 1px darkgray;
+
+}
+#content{
+    width:70%;
+    margin-top:10px;
+    margin-left: 15%;
+    background:white;
+    overflow-y: scroll;
+    height: 600px;
+    border:solid 1px darkgray;
+}
+
+.option{
+    width:100%;
+    position:relative;
+    border-bottom: solid 1px black;
+}
+.primary{
+    height:400px;
+}
+.secondary{
+    height:310px;
+}
+.complain{
+    height:250px;
+}
+.primary .contentImage{
+    height:160px;
+    top:30px;
+}
+.primary .text{
+    width:75%;
+    top:200px;
+    padding-bottom: 25px;
+    font-size: 16px;
+}
+.secondary .contentImage{
+    height:120px;
+    top:30px;
+}
+.secondary .text{
+    width:65%;
+    top:170px;
+    padding-bottom: 30px;
+    font-size: 14px;
+}
+.complain .contentImage{
+    height:90px;
+    top:20px;
+}
+.complain .text{
+    width:55%;
+    top:110px;
+    padding-bottom: 20px;
+    font-size: 12px;
+}
+.text{
+    padding-left: 15px;
+    padding-right: 15px;
+    position:absolute;
+    font-weight: 400;
+    left:0;
+    right:0;
+    margin:auto;
+    border-bottom: dashed 1px gray;
+}
+#oBook, #oPhone, #oComplain{
+    position:absolute;
+    bottom:20px;
+    left:0;
+    right:0;
+    margin:auto;
+    width:auto;
+}
+#oBook{
+    width:211px;
+}
+#oPhone{
+    width:144px;
+}
+#oComplain{
+    width:127px;
+}
+
+#footer{
+    position:absolute;
+    bottom:0;
+    height:150px;
+    background:whitesmoke;
+    width:100%;
+    border-top:solid black 1px;
+    padding-left:300px;
+    left:0;
+    color:darkgray;
+    text-align: center;
+    padding-top:90px;
+}
+
+#background{
+    position:fixed;
+    display: none;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 7000;
+    background: rgba(0, 0, 0, 0.8);
+}
+.widget{
+    background:white;
+    z-index:9000;
+    padding: 50px 20px 20px;
+    border-radius:6px;
+    display: none;
+    position:fixed;
+    width:40%;
+    height:80%;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+}
+.widget form{
+    width:90%;
+    margin-left: 5%;
+}
+.widget form label{
+    display:block;
+}
+.widget form input{
+    font-weight:300;
+    display:flex;
+    flex-direction:row;
+    margin-left:10px;
+}
+.finished{
+    padding-left:33px;
+    position:absolute;
+    bottom:20px;
+    right:20px;
+    width:100px;
+}
