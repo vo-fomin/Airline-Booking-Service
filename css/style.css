@@ -273,3 +273,12 @@ body{
     right:20px;
     width:100px;
 }
+
+#googleMap{
+    position:relative;
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom:2.5%;
+    height: 350px;
+}
