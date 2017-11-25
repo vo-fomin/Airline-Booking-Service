@@ -403,6 +403,10 @@ body{
         width:90px;
         font-size: 8px;
     }
+
+    .description{
+        font-size: 12px;
+    }
 }
 @media (max-width: 1000px) {
     .header-item{
@@ -443,5 +447,8 @@ body{
     .header-item{
         font-size: 12px;
         margin-right:3.5%;
+    }
+    .description{
+        font-size: 10px;
     }
 }
