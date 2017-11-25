@@ -190,10 +190,22 @@
 <div id="book" class="widget">
     <button class="close">X</button>
     <img id="scheme" src="images/Scheme.png" style="display: none">
+
     <canvas id="plane" width="1500" height="800">
 
     </canvas>
     <form>
+        <label>Рейс:
+            <select id="flight">
+                <option value="paris" selected="selected">Київ - Париж</option>
+                <option value="warsaw">Київ - Варшава</option>
+                <option value="lviv">Київ - Львів</option>
+                <option value="newyork">Київ - Нью-Йорк</option>
+                <option value="london">Київ - Лондон</option>
+                <option value="berlin">Київ - Берлін</option>
+                <option value="rome">Київ - Рим</option>
+            </select>
+        </label>
         <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
         <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
         <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>

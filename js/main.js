@@ -4,6 +4,56 @@ var context;
 
 var sits=new Array(40);
 
+var flights=[
+    {
+        dest:'paris',
+        taken:[0, 3, 11, 32, 38]
+    },
+    {
+        dest:'warsaw',
+        taken:[1, 3, 16, 23, 31, 22]
+    },
+    {
+        dest:'lviv',
+        taken:[4, 5, 12, 27, 28, 31, 32, 38]
+    },
+    {
+        dest:'newyork',
+        taken:[0, 4, 3, 5, 10, 18, 11, 24, 26, 32, 33]
+    },
+    {
+        dest:'london',
+        taken:[0, 1, 2, 3, 5, 7, 15, 11, 27, 29, 32, 38]
+    },
+    {
+        dest:'berlin',
+        taken:[4, 9, 5, 10, 11, 15, 19, 31, 25]
+    },
+    {
+        dest:'rome',
+        taken:[14, 16, 3, 11, 32, 35, 40]
+    }
+];
+
+function find(dest){
+    for(var i=0;i<flights.length;i++){
+        if(flights[i].dest===dest)return flights[i].taken;
+    }
+}
+
+function check(j, taken){
+    for(var i=0;i<taken.length;i++){
+        if(taken[i]===j)return true;
+    }
+    return false;
+}
+
+$flight=$("#flight");
+
+$flight.change(function(){
+    init();
+});
+
 var plane=document.getElementById('scheme');
 
 $logo.mouseover(function(){
@@ -29,14 +79,11 @@ $(".close").click(function(){
     $("#background").hide();
 });
 
-$("#oBook").click(function(){
-    $("#book").show();
-    $("#background").show();
-    context=canvas.getContext('2d');
+function init(){
     var bool;
     for(var i=210, n=0;i<=740;i+=50){
         for(var j=585;j<=810;j+=70){
-            bool=n===0 || n===3 || n===11 || n===32 || n===38;
+            bool=check(n, find($flight.find(":selected").val()));
             sits[n++]={
                 x:j,
                 y:i,
@@ -51,6 +98,13 @@ $("#oBook").click(function(){
         if(i===530 || i===360)i+=20;
     }
     redraw();
+}
+
+$("#oBook").click(function(){
+    $("#book").show();
+    $("#background").show();
+    context=canvas.getContext('2d');
+    init();
 });
 
 var mousePos;
