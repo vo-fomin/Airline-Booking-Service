@@ -138,8 +138,6 @@ body{
     margin-top:10px;
     margin-left: 15%;
     background:white;
-    overflow-y: scroll;
-    height: 600px;
     border:solid 1px darkgray;
 }
 
