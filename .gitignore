@@ -1,4 +1,2 @@
-
-.DS_Store
-.idea
-Frontend/assets/images/Ambient
+node_modules/
+.idea/
