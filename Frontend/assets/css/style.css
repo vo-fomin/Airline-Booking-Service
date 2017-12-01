@@ -244,13 +244,42 @@ body{
     border-radius:6px;
     display: none;
     position:fixed;
-    width:40%;
-    height:80%;
+    width:0;
+    height:0;
     left:0;
     right:0;
     top:0;
     bottom:0;
     margin:auto;
+    transition: all 0.6s ease-in;
+    font-size: 0;
+}
+
+.widget .finished{
+    width:0;
+}
+.enabled textarea{
+    transition:font-size 0.0001s ease;
+}
+.enabled{
+    width:40%;
+    height:80%;
+    transition: width 0.6s ease-in, height 0.6s ease-in;
+}
+.enabled div, .enabled form, .enabled img, .enabled .finished {
+    transition: font-size 0.6s ease-in, width 0.6s ease-in, height 0.6s ease-in;
+}
+.enabled div{
+    font-size: 16px;
+}
+.enabled form, .enabled .map-caption{
+    font-size: 14px;
+}
+.enabled .finished{
+    width:100px;
+}
+.map-caption{
+    margin-left: 8%;
 }
 .widget form{
     width:90%;
@@ -266,11 +295,9 @@ body{
     margin-left:10px;
 }
 .finished{
-    padding-left:33px;
     position:absolute;
     bottom:20px;
     right:20px;
-    width:100px;
 }
 
 #googleMap{
@@ -280,6 +307,7 @@ body{
     margin-left: 5%;
     margin-bottom:2.5%;
     height: 350px;
+    transition: all 0s;
 }
 
 @media (max-width: 1625px) {

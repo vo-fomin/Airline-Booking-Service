@@ -15,6 +15,7 @@ $(function(){
 
 
 
+
     function find(dest) {
         for (var i = 0; i < flights.length; i++) {
             if (flights[i].dest === dest) return flights[i].taken;
@@ -50,12 +51,8 @@ $(function(){
     });
 
     $(".close").click(function () {
-        $("#book").hide();
-        $("#phone").hide();
-        $("#complain").hide();
-        $("#contact").hide();
-        $("#details").hide();
-        $("#service").hide();
+        $(".widget").removeClass("enabled");
+        $(".widget").hide();
         $("#background").hide();
     });
 
@@ -83,6 +80,9 @@ $(function(){
 
     $("#oBook").click(function () {
         $("#book").show();
+        window.setTimeout(function(){
+            $("#book").addClass('enabled');
+        }, 1);
         $("#background").show();
         context = canvas.getContext('2d');
         init();
@@ -134,37 +134,56 @@ $(function(){
     }
 
     function redraw() {
-        context.drawImage(plane, -600, 0, 2650, 1200);
-        for (var i = 0; i < sits.length; i++) {
-            if (sits[i].marked) context.fillStyle = 'gray';
-            if (sits[i].taken) context.fillStyle = 'black';
-            context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).stroke();
-            if (sits[i].taken || sits[i].marked) context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).fill();
+        if(context) {
+            context.drawImage(plane, -600, 0, 2650, 1200);
+            for (var i = 0; i < sits.length; i++) {
+                if (sits[i].marked) context.fillStyle = 'gray';
+                if (sits[i].taken) context.fillStyle = 'black';
+                context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).stroke();
+                if (sits[i].taken || sits[i].marked) context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).fill();
+            }
         }
-
     }
 
     $("#oPhone").click(function () {
         $("#phone").show();
+        window.setTimeout(function(){
+            $("#phone").addClass('enabled');
+        }, 1);
         $("#background").show();
     });
 
     $("#oComplain").click(function () {
         $("#complain").show();
+        window.setTimeout(function(){
+            $("#complain").addClass('enabled');
+            }, 1);
         $("#background").show();
     });
 
     $("#infoPage").click(function () {
         $("#details").show();
+        window.setTimeout(function(){
+            $("#details").addClass('enabled');
+        }, 1);
         $("#background").show();
     });
     $("#contactPage").click(function () {
         $("#contact").show();
+        window.setTimeout(function(){
+            $("#contact").addClass('enabled');
+        }, 1);
         $("#background").show();
-        GoogleMap.init();
+        window.setTimeout(function() {
+            GoogleMap.init();
+            },
+            610);
     });
     $("#servicePage").click(function () {
         $("#service").show();
+        window.setTimeout(function(){
+            $("#service").addClass('enabled');
+        }, 1);
         $("#background").show();
     });
 
