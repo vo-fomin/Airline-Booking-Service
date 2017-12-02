@@ -252,7 +252,7 @@ body{
     bottom:0;
     margin:auto;
     opacity:0;
-    transition: opacity 0.6s ease-in;
+    transition: opacity 0.3s ease-in;
 }
 .enabled{
     opacity: 1;

@@ -114,7 +114,7 @@ $(function(){
         window.setTimeout(function(){
             $(".widget").hide();
             $("#background").hide();
-        }, 600);
+        }, 300);
     });
 
     function init() {
