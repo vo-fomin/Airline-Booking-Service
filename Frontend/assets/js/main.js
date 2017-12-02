@@ -111,8 +111,10 @@ $(function(){
 
     $(".close").click(function () {
         $(".widget").removeClass("enabled");
-        $(".widget").hide();
-        $("#background").hide();
+        window.setTimeout(function(){
+            $(".widget").hide();
+            $("#background").hide();
+        }, 600);
     });
 
     function init() {
@@ -233,10 +235,7 @@ $(function(){
             $("#contact").addClass('enabled');
         }, 1);
         $("#background").show();
-        window.setTimeout(function() {
-            GoogleMap.init();
-            },
-            610);
+        GoogleMap.init();
     });
     $("#servicePage").click(function () {
         $("#service").show();

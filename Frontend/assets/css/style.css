@@ -244,42 +244,18 @@ body{
     border-radius:6px;
     display: none;
     position:fixed;
-    width:0;
-    height:0;
+    width:40%;
+    height:80%;
     left:0;
     right:0;
     top:0;
     bottom:0;
     margin:auto;
-    transition: all 0.6s ease-in;
-    font-size: 0;
-}
-
-.widget .finished{
-    width:0;
-}
-.enabled textarea{
-    transition:font-size 0.0001s ease;
+    opacity:0;
+    transition: opacity 0.6s ease-in;
 }
 .enabled{
-    width:40%;
-    height:80%;
-    transition: width 0.6s ease-in, height 0.6s ease-in;
-}
-.enabled div, .enabled form, .enabled img, .enabled .finished {
-    transition: font-size 0.6s ease-in, width 0.6s ease-in, height 0.6s ease-in;
-}
-.enabled div{
-    font-size: 16px;
-}
-.enabled form, .enabled .map-caption{
-    font-size: 14px;
-}
-.enabled .finished{
-    width:100px;
-}
-.map-caption{
-    margin-left: 8%;
+    opacity: 1;
 }
 .widget form{
     width:90%;
@@ -298,6 +274,7 @@ body{
     position:absolute;
     bottom:20px;
     right:20px;
+    width:100px;
 }
 
 #googleMap{
