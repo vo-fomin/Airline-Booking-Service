@@ -1,8 +1,9 @@
 body{
     background:lightgray;
     position:relative;
-    padding-left:300px;
-    padding-bottom:160px;
+    padding-left:250px;
+    padding-bottom:40px;
+    overflow-x: hidden;
 }
 #header{
     width:100%;
@@ -43,42 +44,21 @@ body{
     transition: background-color 0.3s;
     background-color:rgba(200, 200, 200, 0.2);
 }
-.gallery-item{
-    margin-top: 20px;
-    margin-left:17%;
-    display: inline-block;
-    float:left;
-}
-.gallery-item img{
-    height:125px;
-}
-.gallery-item p{
-    display:inline-block;
-    max-width:125px;
-    margin-top: 5px;
-    font-size:12px;
-    text-align: center;
-}
+
 #slider{
     margin-top: 90px;
-    padding-top:10px;
-    padding-bottom:20px;
-    background: darkgray;
-    border-bottom: solid black 1px;
+    padding-top: 2px;
 }
-#gallery{
-    margin-top:10px;
-    height:230px;
-    border-top:solid black 1px;
-    border-bottom: solid black 1px;
-}
+
+
 .close{
     position:absolute;
     top:20px;
     right:20px;
 }
 .container{
-    width:95%;
+    width:100%;
+    padding: 0px;
 }
 .item{
     position:relative;
@@ -97,10 +77,9 @@ body{
     top:90px;
     position:fixed;
     z-index:2000;
-    width:300px;
+    width:250px;
     height:100%;
     background:white;
-    overflow-y:scroll;
     overflow-x:hidden;
 }
 .menu-level{
@@ -217,15 +196,12 @@ body{
 #footer{
     position:absolute;
     bottom:0;
-    height:150px;
-    background:whitesmoke;
-    width:100%;
-    border-top:solid black 1px;
-    padding-left:300px;
-    left:0;
+    height:30px;
+    right:0px;
+    left:250px;
     color:darkgray;
     text-align: center;
-    padding-top:90px;
+    padding-bottom: 20px;
 }
 
 #background{
