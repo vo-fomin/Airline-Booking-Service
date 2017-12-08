@@ -62,8 +62,9 @@ body{
 #slider{
     margin-top: 90px;
     padding-top:10px;
-    padding-bottom:10px;
+    padding-bottom:20px;
     background: darkgray;
+    border-bottom: solid black 1px;
 }
 #gallery{
     margin-top:10px;
