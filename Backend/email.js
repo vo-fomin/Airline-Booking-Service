@@ -11,12 +11,12 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-function sendEmail(to, name, code){
+function sendEmail(to, subject, message){
     var mailOptions = {
         from: myMail,
         to: to,
-        subject: 'Бронювання квитків',
-        text: 'Шановний(а) '+name+'\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: '+code
+        subject: subject,
+        text: message
     };
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {

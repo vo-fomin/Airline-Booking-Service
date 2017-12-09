@@ -10,7 +10,20 @@ var create = function (data, signature) {
     }).on("liqpay.callback", function (data) {
         console.log(data.status);
         console.log(data);
-        if(data.status!=="failure")sender.sucAlert();
+        if(data.status!=="failure") {
+            sender.getClientData(function(error, response){
+                if(error)alert(error);
+                else {
+                    console.log(response);
+                    sender.sendMail({
+                            to:response.email,
+                        subject:'Бронювання квитків',
+                        message:'Шановний(а) ' + response.name + '\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: ' + response.code
+                    }
+                    );
+                }
+            });
+        }
         suc=data.result==="success";
     }).on("liqpay.ready", function (data) {
 //	ready

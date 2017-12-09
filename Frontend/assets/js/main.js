@@ -37,8 +37,12 @@ exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
 };
 
-exports.sucAlert=function(alert_data, callback){
-    backendPost("/api/send-alert/", alert_data, callback);
+exports.sendMail=function(data, callback){
+    backendPost("/api/send-mail/", data, callback);
+};
+
+exports.getClientData=function(callback){
+    backendGet("/api/get-client-data/", callback);
 };
 },{}],2:[function(require,module,exports){
 var map;
@@ -516,7 +520,14 @@ $(function(){
         });
     });
 
-
+    $("#sendComplaint").click(function(){
+        API.sendMail({
+            to:$clientMail3.val(),
+            subject: 'Скаргу отримано',
+            message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми отримали вашу скаргу й обов'язково розглянемо її!"
+        }
+    );
+    });
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;
@@ -544,7 +555,20 @@ var create = function (data, signature) {
     }).on("liqpay.callback", function (data) {
         console.log(data.status);
         console.log(data);
-        if(data.status!=="failure")sender.sucAlert();
+        if(data.status!=="failure") {
+            sender.getClientData(function(error, response){
+                if(error)alert(error);
+                else {
+                    console.log(response);
+                    sender.sendMail({
+                            to:response.email,
+                        subject:'Бронювання квитків',
+                        message:'Шановний(а) ' + response.name + '\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: ' + response.code
+                    }
+                    );
+                }
+            });
+        }
         suc=data.result==="success";
     }).on("liqpay.ready", function (data) {
 //	ready

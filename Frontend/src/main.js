@@ -453,7 +453,14 @@ $(function(){
         });
     });
 
-
+    $("#sendComplaint").click(function(){
+        API.sendMail({
+            to:$clientMail3.val(),
+            subject: 'Скаргу отримано',
+            message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми отримали вашу скаргу й обов'язково розглянемо її!"
+        }
+    );
+    });
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;

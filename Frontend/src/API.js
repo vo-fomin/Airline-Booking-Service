@@ -36,6 +36,10 @@ exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
 };
 
-exports.sucAlert=function(alert_data, callback){
-    backendPost("/api/send-alert/", alert_data, callback);
+exports.sendMail=function(data, callback){
+    backendPost("/api/send-mail/", data, callback);
+};
+
+exports.getClientData=function(callback){
+    backendGet("/api/get-client-data/", callback);
 };
