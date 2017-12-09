@@ -6,33 +6,53 @@ $(function(){
 
     var sits = new Array(40);
     var flights = null;
+    var dates=null;
     var API=require('./API');
     API.getFlights(function (error, data){
         if(error)alert(error);
         else flights=data;
-        init();
+        changeFlight();
     });
 
 
 
 
-    function find(dest) {
+    function fillDates(dest) {
         for (var i = 0; i < flights.length; i++) {
-            if (flights[i].dest === dest) return flights[i].taken;
+            if (flights[i].dest === dest) {
+                dates=flights[i].dates;
+                $("#date").empty();
+                for(var j=0;j<dates.length;j++){
+                    date.add(new Option(dates[j].date, dates[j].date, j === 0, j === 0));
+                }
+                break;
+            }
+        }
+    }
+    function getTaken(date) {
+        for (var i = 0; i < dates.length; i++) {
+            if (dates[i].date === date) return dates[i].taken;
         }
     }
 
     function check(j, taken) {
-        for (var i = 0; i < taken.length; i++) {
-            if (taken[i] === j) return true;
+        if(taken) {
+            for (var i = 0; i < taken.length; i++) {
+                if (taken[i] === j) return true;
+            }
         }
         return false;
     }
 
     var $flight = $("#flight");
+    var date = document.getElementById("date");
 
     $flight.change(function () {
-        init();
+        changeFlight();
+    });
+
+    $("#date").change(function(){
+        changeDate();
     });
 
     var plane = document.getElementById('scheme');
@@ -58,11 +78,14 @@ $(function(){
         }, 300);
     });
 
-    function init() {
-        var bool;
+    function changeFlight() {
+        var bool, flight, date;
         for (var i = 210, n = 0; i <= 740; i += 50) {
             for (var j = 585; j <= 810; j += 70) {
-                bool = check(n, find($flight.find(":selected").val()));
+                flight=$flight.find(":selected").val();
+                fillDates(flight);
+                date=$("#date").find(":selected").val();
+                bool = check(n, getTaken(date));
                 sits[n++] = {
                     x: j,
                     y: i,
@@ -77,7 +100,28 @@ $(function(){
             if (i === 530 || i === 360) i += 20;
         }
         redraw();
+    }
 
+    function changeDate(){
+        var bool, date;
+        for (var i = 210, n = 0; i <= 740; i += 50) {
+            for (var j = 585; j <= 810; j += 70) {
+                date=$("#date").find(":selected").val();
+                bool = check(n, getTaken(date));
+                sits[n++] = {
+                    x: j,
+                    y: i,
+                    w: 60,
+                    h: 40,
+                    br: 6,
+                    taken: bool,
+                    marked: false
+                };
+                if (j === 655) j += 15;
+            }
+            if (i === 530 || i === 360) i += 20;
+        }
+        redraw();
     }
 
     $("#oBook").click(function () {
@@ -87,7 +131,7 @@ $(function(){
         }, 1);
         $("#background").show();
         context = canvas.getContext('2d');
-        init();
+        changeFlight();
     });
 
     var mousePos;
