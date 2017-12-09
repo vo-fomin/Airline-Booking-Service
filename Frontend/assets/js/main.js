@@ -66,6 +66,7 @@ $(function(){
     var sits = new Array(40);
     var flights = null;
     var dates=null;
+    var count=0;
     var API=require('./API');
     API.getFlights(function (error, data){
         if(error)alert(error);
@@ -90,7 +91,10 @@ $(function(){
     }
     function getTaken(date) {
         for (var i = 0; i < dates.length; i++) {
-            if (dates[i].date === date) return dates[i].taken;
+            if (dates[i].date === date){
+                currentPrice=dates[i].price;
+                return dates[i].taken;
+            }
         }
     }
 
@@ -105,12 +109,16 @@ $(function(){
 
     var $flight = $("#flight");
     var date = document.getElementById("date");
+    var $price=$("#price");
+    var currentPrice=0;
 
     $flight.change(function () {
+        count=0;
         changeFlight();
     });
 
     $("#date").change(function(){
+        count=0;
         changeDate();
     });
 
@@ -159,6 +167,7 @@ $(function(){
             if (i === 530 || i === 360) i += 20;
         }
         redraw();
+        updatePrice();
     }
 
     function changeDate(){
@@ -181,6 +190,7 @@ $(function(){
             if (i === 530 || i === 360) i += 20;
         }
         redraw();
+        updatePrice();
     }
 
     $("#oBook").click(function () {
@@ -217,16 +227,26 @@ $(function(){
         redraw();
         for (var k = 0; k < sits.length; k++) {
             if (mousePos.x >= sits[k].x && mousePos.x <= sits[k].x + sits[k].w && mousePos.y >= sits[k].y && mousePos.y <= sits[k].y + sits[k].h && !sits[k].taken) {
-                if (!sits[k].marked) context.fillStyle = 'gray';
-                else context.fillStyle = 'lightgray';
+                if (!sits[k].marked){
+                    context.fillStyle = 'gray';
+                    count++;
+                }
+                else {
+                    context.fillStyle = 'lightgray';
+                    count--;
+                }
                 sits[k].marked = !sits[k].marked;
                 context.roundRect(sits[k].x, sits[k].y, sits[k].w, sits[k].h, sits[k].br).fill();
                 break;
             }
         }
+        updatePrice();
     });
 
 
+    function updatePrice(){
+        $price.text(count*currentPrice*25+" грн");
+    }
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect(), // abs. size of element
             scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X

@@ -247,6 +247,12 @@ body{
     flex-direction:row;
     margin-left:10px;
 }
+.sum{
+    position:absolute;
+    bottom:80px;
+    right:40px;
+    width:100px;
+}
 .finished{
     position:absolute;
     bottom:20px;
