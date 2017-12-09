@@ -14,7 +14,7 @@ function backendGet(url, callback) {
     })
 }
 
-/*function backendPost(url, data, callback) {
+function backendPost(url, data, callback) {
     $.ajax({
         url: API_URL + url,
         type: 'POST',
@@ -27,15 +27,15 @@ function backendGet(url, callback) {
             callback(new Error("Ajax Failed"));
         }
     })
-}*/
+}
 
 exports.getFlights = function(callback) {
     backendGet("/api/get-flights/", callback);
 };
 
-/*exports.createOrder = function(order_info, callback) {
+exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
-};*/
+};
 },{}],2:[function(require,module,exports){
 var map;
 
@@ -68,6 +68,7 @@ $(function(){
     var dates=null;
     var count=0;
     var API=require('./API');
+    var Pay=require('./payment');
     API.getFlights(function (error, data){
         if(error)alert(error);
         else flights=data;
@@ -310,6 +311,61 @@ $(function(){
         $("#background").show();
     });
 
+    $("#order").click(function(){
+        event.preventDefault();
+        var suc=true;
+        var $client=$("#client");
+        var $clientPhone=$("#tel");
+        var $clientMail=$("#mail");
+        var $clientAddress=$("#address");
+
+        var name = $client.val();
+        if(name===""){
+            $client.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $client.css("box-shadow", "0 0 3px #006600");
+
+        var phone = $clientPhone.val();
+        if(phone==="" || (phone.charAt(0)==='+' && phone.length<13) || (phone.charAt(0)==='0' && phone.length<10)){
+            $clientPhone.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientPhone.css("box-shadow", "0 0 3px #006600");
+
+        var mail = $clientMail.val();
+        if(mail===""){
+            $clientMail.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientMail.css("box-shadow", "0 0 3px #006600");
+
+        var address = $clientAddress.val();
+        if(address===""){
+            $clientAddress.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientAddress.css("box-shadow", "0 0 3px #006600");
+
+        if(suc) {
+            var order_info = {
+                name: name,
+                phone: phone,
+                address: address,
+                email: mail,
+                cost: parseInt($("#price").text().split(" ")[0]),
+                flight:""
+            };
+            API.createOrder(order_info, function (error, data) {
+                if (error) alert(error);
+                else {
+                    window.LiqPayCheckoutCallback=Pay.create(data.data, data.signature);
+                }
+            });
+
+        }
+    });
+
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;
         if (h < 2 * r) r = h / 2;
@@ -323,4 +379,29 @@ $(function(){
         return this;
     };
 });
-},{"./API":1,"./googleMaps":2}]},{},[3]);
+},{"./API":1,"./googleMaps":2,"./payment":4}],4:[function(require,module,exports){
+
+var create = function (data, signature) {
+    var suc;
+    LiqPayCheckout.init({
+        data: data,
+        signature: signature,
+        embedTo: "#liqpay",
+        mode: "popup"
+    }).on("liqpay.callback", function (data) {
+        console.log(data.status);
+        console.log(data);
+        suc=data.result==="success";
+    }).on("liqpay.ready", function (data) {
+//	ready
+    }).on("liqpay.close", function (data) {
+//	close
+        if(suc) {
+            alert("Транзакція успішна!\n    Дякуємо за купівлю!:)");
+            window.location.href = '/';
+        }
+    });
+};
+
+exports.create=create;
+},{}]},{},[3]);

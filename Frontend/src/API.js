@@ -13,7 +13,7 @@ function backendGet(url, callback) {
     })
 }
 
-/*function backendPost(url, data, callback) {
+function backendPost(url, data, callback) {
     $.ajax({
         url: API_URL + url,
         type: 'POST',
@@ -26,12 +26,12 @@ function backendGet(url, callback) {
             callback(new Error("Ajax Failed"));
         }
     })
-}*/
+}
 
 exports.getFlights = function(callback) {
     backendGet("/api/get-flights/", callback);
 };
 
-/*exports.createOrder = function(order_info, callback) {
+exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
-};*/
+};

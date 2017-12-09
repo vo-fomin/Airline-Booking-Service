@@ -204,12 +204,12 @@
             <select id="date">
             </select>
         </label>
-        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
-        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
-        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
-        <label>Адреса: <input type="text" pattern="{1,}"></label>
+        <label>ПІБ: <input type="text" id="client" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>E-mail: <input type="email" id="mail" pattern="[0-9A-Za-z@.]{6,}"></label>
+        <label>Телефон: <input type="tel" id="tel" pattern="[0-9]{1,}"></label>
+        <label>Адреса: <input type="text" id="address" pattern="{1,}"></label>
         <div class="sum"><h3>Ціна:</h3><span id="price">0 грн</span></div>
-        <button class="finished active btn btn-info">Далі</button>
+        <button class="finished active btn btn-info" id="order">Далі</button>
     </form>
 </div>
 
@@ -237,5 +237,6 @@
         <button class="finished active btn btn-info">Далі</button>
     </form>
 </div>
+<div id="liqpay" style="z-index:99999999999"></div>
 
 <% include common/footer.ejs %>

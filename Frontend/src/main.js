@@ -9,6 +9,7 @@ $(function(){
     var dates=null;
     var count=0;
     var API=require('./API');
+    var Pay=require('./payment');
     API.getFlights(function (error, data){
         if(error)alert(error);
         else flights=data;
@@ -249,6 +250,61 @@ $(function(){
             $("#service").addClass('enabled');
         }, 1);
         $("#background").show();
+    });
+
+    $("#order").click(function(){
+        event.preventDefault();
+        var suc=true;
+        var $client=$("#client");
+        var $clientPhone=$("#tel");
+        var $clientMail=$("#mail");
+        var $clientAddress=$("#address");
+
+        var name = $client.val();
+        if(name===""){
+            $client.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $client.css("box-shadow", "0 0 3px #006600");
+
+        var phone = $clientPhone.val();
+        if(phone==="" || (phone.charAt(0)==='+' && phone.length<13) || (phone.charAt(0)==='0' && phone.length<10)){
+            $clientPhone.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientPhone.css("box-shadow", "0 0 3px #006600");
+
+        var mail = $clientMail.val();
+        if(mail===""){
+            $clientMail.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientMail.css("box-shadow", "0 0 3px #006600");
+
+        var address = $clientAddress.val();
+        if(address===""){
+            $clientAddress.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientAddress.css("box-shadow", "0 0 3px #006600");
+
+        if(suc) {
+            var order_info = {
+                name: name,
+                phone: phone,
+                address: address,
+                email: mail,
+                cost: parseInt($("#price").text().split(" ")[0]),
+                flight:""
+            };
+            API.createOrder(order_info, function (error, data) {
+                if (error) alert(error);
+                else {
+                    window.LiqPayCheckoutCallback=Pay.create(data.data, data.signature);
+                }
+            });
+
+        }
     });
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
