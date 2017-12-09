@@ -335,6 +335,7 @@ $(function(){
     var $clientAddress=$("#address");
 
     var $client2=$("#client2");
+    var $clientMail2=$("#mail2");
     var $clientPhone2=$("#tel2");
 
     var $client3=$("#client3");
@@ -489,6 +490,7 @@ $(function(){
         window.setTimeout(function() {
             var $mail;
             if(!$clientMail.is(':hidden'))$mail=$clientMail;
+            else if(!$clientMail2.is(':hidden'))$mail=$clientMail2;
             else $mail=$clientMail3;
             if ($mail.val() === "" || $mail.val().length < 5 || $mail.val().indexOf('@')===-1 || $mail.val().indexOf('.')===-1) {
                 $mail.css("box-shadow", "0 0 3px #CC0000");
@@ -526,7 +528,16 @@ $(function(){
             subject: 'Скаргу отримано',
             message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми отримали вашу скаргу й обов'язково розглянемо її!"
         }
-    );
+        );
+    });
+
+    $("#orderCall").click(function(){
+        API.sendMail({
+                to:$clientMail2.val(),
+                subject: 'Заяву отримано',
+                message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми вам зателефонуємо найближчим часом!"
+            }
+        );
     });
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
