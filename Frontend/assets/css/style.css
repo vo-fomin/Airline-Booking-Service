@@ -58,7 +58,7 @@ body{
 }
 .container{
     width:100%;
-    padding: 0px;
+    padding: 0;
 }
 .item{
     position:relative;
@@ -81,6 +81,7 @@ body{
     height:100%;
     background:white;
     overflow-x:hidden;
+    overflow-y:auto;
 }
 .menu-level{
     margin-left: 10px;
@@ -197,7 +198,7 @@ body{
     position:absolute;
     bottom:0;
     height:30px;
-    right:0px;
+    right:0;
     left:250px;
     color:darkgray;
     text-align: center;
@@ -393,6 +394,12 @@ body{
     .description{
         font-size: 12px;
     }
+    .left-panel{
+        display:none;
+    }
+    body{
+        padding-left:0;
+    }
 }
 @media (max-width: 1000px) {
     .header-item{
@@ -433,12 +440,6 @@ body{
     .header-item{
         font-size: 12px;
         margin-right:3.5%;
-    }
-    .left-panel{
-        display:none;
-    }
-    body{
-        padding-left:0;
     }
     .description{
         font-size: 10px;
