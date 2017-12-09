@@ -145,14 +145,14 @@ $(function(){
     $(".close").click(function () {
         $(".widget").removeClass("enabled");
         count=0;
-        $client.val("");
-        $client.css("box-shadow", "none");
-        $clientPhone.val("");
-        $clientPhone.css("box-shadow", "none");
-        $clientMail.val("");
-        $clientMail.css("box-shadow", "none");
-        $clientAddress.val("");
-        $clientAddress.css("box-shadow", "none");
+        $(".nameInput").val("");
+        $(".nameInput").css("box-shadow", "none");
+        $(".phoneInput").val("");
+        $(".phoneInput").css("box-shadow", "none");
+        $(".mailInput").val("");
+        $(".mailInput").css("box-shadow", "none");
+        $(".addressInput").val("");
+        $(".addressInput").css("box-shadow", "none");
         $price.css("box-shadow", "none");
         window.setTimeout(function(){
             $(".widget").hide();
@@ -324,10 +324,19 @@ $(function(){
         }, 1);
         $("#background").show();
     });
+
     var $client=$("#client");
     var $clientPhone=$("#tel");
     var $clientMail=$("#mail");
     var $clientAddress=$("#address");
+
+    var $client2=$("#client2");
+    var $clientPhone2=$("#tel2");
+
+    var $client3=$("#client3");
+    var $clientPhone3=$("#tel3");
+    var $clientMail3=$("#mail3");
+    var $clientAddress3=$("#address3");
 
     $("#order").click(function(){
         event.preventDefault();
@@ -393,7 +402,7 @@ $(function(){
         }
     });
 
-    $client.bind("keypress", function(event){
+    $(".nameInput").bind("keypress", function(event){
         var regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'/ -]+$");
         var key=String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if(!regex.test(key)){
@@ -402,16 +411,20 @@ $(function(){
         }
     });
 
-    $client.bind("keydown", function(event){
+    $(".nameInput").bind("keydown", function(event){
         window.setTimeout(function() {
-            if($client.val()===""){
-                $client.css("box-shadow", "0 0 3px #CC0000");
+            var $name;
+            if(!$client.is(':hidden'))$name=$client;
+            else if(!$client2.is(':hidden'))$name=$client2;
+            else $name=$client3;
+            if($name.val()===""){
+                $name.css("box-shadow", "0 0 3px #CC0000");
             }
-            else $client.css("box-shadow", "0 0 3px #006600");
+            else $name.css("box-shadow", "0 0 3px #006600");
         }, 0);
     });
 
-    $clientPhone.bind("keypress", function(event){
+    $(".phoneInput").bind("keypress", function(event){
         var regex;
         var key;
         var text=$(this).val();
@@ -444,16 +457,20 @@ $(function(){
         }
     });
 
-    $clientPhone.bind("keydown", function(event){
+    $(".phoneInput").bind("keydown", function(event){
         window.setTimeout(function() {
-            if ($clientPhone.val() === "" || ($clientPhone.val().charAt(0) === '+' && $clientPhone.val().length < 13) || ($clientPhone.val().charAt(0) === '0' && $clientPhone.val().length < 10)) {
-                $clientPhone.css("box-shadow", "0 0 3px #CC0000");
+            var $phone;
+            if(!$clientPhone.is(':hidden'))$phone=$clientPhone;
+            else if(!$clientPhone2.is(':hidden'))$phone=$clientPhone2;
+            else $phone=$clientPhone3;
+            if ($phone.val() === "" || ($phone.val().charAt(0) === '+' && $phone.val().length < 13) || ($phone.val().charAt(0) === '0' && $phone.val().length < 10)) {
+                $phone.css("box-shadow", "0 0 3px #CC0000");
             }
-            else $clientPhone.css("box-shadow", "0 0 3px #006600");
+            else $phone.css("box-shadow", "0 0 3px #006600");
         });
     });
 
-    $clientMail.bind("keypress", function(event){
+    $(".mailInput").bind("keypress", function(event){
         var regex;
         var key;
         regex = new RegExp("^[0-9A-Za-z@.]+$");
@@ -464,16 +481,19 @@ $(function(){
         }
     });
 
-    $clientMail.bind("keydown", function(event){
+    $(".mailInput").bind("keydown", function(event){
         window.setTimeout(function() {
-            if ($clientMail.val() === "" || $clientMail.val().length < 5 || $clientMail.val().indexOf('@')===-1 || $clientMail.val().indexOf('.')===-1) {
-                $clientMail.css("box-shadow", "0 0 3px #CC0000");
+            var $mail;
+            if(!$clientMail.is(':hidden'))$mail=$clientMail;
+            else $mail=$clientMail3;
+            if ($mail.val() === "" || $mail.val().length < 5 || $mail.val().indexOf('@')===-1 || $mail.val().indexOf('.')===-1) {
+                $mail.css("box-shadow", "0 0 3px #CC0000");
             }
-            else $clientMail.css("box-shadow", "0 0 3px #006600");
+            else $mail.css("box-shadow", "0 0 3px #006600");
         });
     });
 
-    $clientAddress.bind("keypress", function(event){
+    $(".addressInput").bind("keypress", function(event){
         var regex;
         var key;
         regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'.,/ -]+$");
@@ -484,12 +504,15 @@ $(function(){
         }
     });
 
-    $clientAddress.bind("keydown", function(event){
+    $(".addressInput").bind("keydown", function(event){
         window.setTimeout(function() {
-            if ($clientAddress.val() === "" || $clientAddress.val().length < 1) {
-                $clientAddress.css("box-shadow", "0 0 3px #CC0000");
+            var $address;
+            if(!$clientAddress.is(':hidden'))$address=$clientAddress;
+            else $address=$clientAddress3;
+            if ($address.val() === "" || $address.val().length < 1) {
+                $address.css("box-shadow", "0 0 3px #CC0000");
             }
-            else $clientAddress.css("box-shadow", "0 0 3px #006600");
+            else $address.css("box-shadow", "0 0 3px #006600");
         });
     });
 

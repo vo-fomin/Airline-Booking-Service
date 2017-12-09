@@ -204,10 +204,10 @@
             <select id="date">
             </select>
         </label>
-        <label>ПІБ: <input type="text" id="client"></label>
-        <label>E-mail: <input type="email" id="mail"></label>
-        <label>Телефон: <input type="tel" id="tel"></label>
-        <label>Адреса: <input type="text" id="address"></label>
+        <label>ПІБ: <input type="text" class="nameInput" id="client"></label>
+        <label>E-mail: <input type="email" class="mailInput" id="mail"></label>
+        <label>Телефон: <input type="tel" class="phoneInput" id="tel"></label>
+        <label>Адреса: <input type="text" class="addressInput" id="address"></label>
         <div class="sum"><h3>Ціна:</h3><span id="price">0 грн</span></div>
         <button class="finished active btn btn-info" id="order">Далі</button>
     </form>
@@ -220,21 +220,21 @@
         <p style="display:block;margin-top:5%;margin-bottom:10%;">Введіть ваші телефон й ім'я та ми вам передзвонимо!</p>
     </div>
     <form>
-        <label>ПІБ: <input type="text" id="client2"></label>
-        <label>Телефон: <input type="tel" id="tel2"></label>
-        <button class="finished active btn btn-info">Далі</button>
+        <label>ПІБ: <input type="text" class="nameInput" id="client2"></label>
+        <label>Телефон: <input type="tel" class="phoneInput" id="tel2"></label>
+        <button class="finished active btn btn-info" id="orderCall">Далі</button>
     </form>
 </div>
 
 <div id="complain" class="widget">
     <button class="close">X</button>
     <form>
-        <label>ПІБ: <input type="text" id="clien3t"></label>
-        <label>E-mail: <input type="email" id="mail3"></label>
-        <label>Телефон: <input type="tel" id="tel3"></label>
-        <label>Адреса: <input type="text" id="address3"></label>
+        <label>ПІБ: <input type="text" class="nameInput" id="client3"></label>
+        <label>E-mail: <input type="email" class="mailInput" id="mail3"></label>
+        <label>Телефон: <input type="tel" class="phoneInput" id="tel3"></label>
+        <label>Адреса: <input type="text" class="addressInput" id="address3"></label>
         <label>Скарга: <br><textarea rows="15" cols="65" style="resize: none; margin-left:10px;"></textarea></label>
-        <button class="finished active btn btn-info">Далі</button>
+        <button class="finished active btn btn-info" id="sendComplaint">Далі</button>
     </form>
 </div>
 <div id="liqpay" style="z-index:99999999999"></div>
