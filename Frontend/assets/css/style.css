@@ -428,6 +428,12 @@ body{
         font-size: 12px;
         margin-right:3.5%;
     }
+    .left-panel{
+        display:none;
+    }
+    body{
+        padding-left:0;
+    }
     .description{
         font-size: 10px;
     }
