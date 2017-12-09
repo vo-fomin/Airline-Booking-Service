@@ -241,6 +241,9 @@ body{
 .widget form label{
     display:block;
 }
+form{
+    margin-top:-1.5%;
+}
 .widget form input, select{
     font-weight:300;
     display:flex;
@@ -266,9 +269,91 @@ body{
     margin-top: 5%;
     margin-left: 5%;
     margin-bottom:2.5%;
-    height: 350px;
+    height: 50%;
     transition: all 0s;
 }
+
+@media(max-height: 850px){
+    input, label, .widget p, .finished, .sum{
+        font-size:12px;
+    }
+
+    textarea{
+        font-size:14px;
+    }
+
+    .finished{
+        width:80px;
+    }
+}
+
+@media(max-height: 750px){
+    input, label, .widget p, .finished, .sum{
+        font-size:10px;
+    }
+
+    form{
+        margin-top:-2%;
+    }
+    textarea{
+        font-size:13px;
+    }
+
+    .finished{
+        width:60px;
+    }
+
+    .left-panel{
+        font-size:12px;
+    }
+}
+
+@media(max-height: 650px){
+    input, label, .widget p, .finished, .sum{
+        font-size:8px;
+    }
+    form{
+        margin-top:-2.8%;
+    }
+    textarea{
+        font-size:12px;
+    }
+    .finished{
+        width:40px;
+    }
+    .left-panel{
+        font-size:11px;
+    }
+}
+
+@media(max-height: 550px){
+    input, label, .widget p, .finished, .sum{
+        font-size:6px;
+    }
+    form{
+        margin-top:-3%;
+    }
+    .finished{
+        width:20px;
+    }
+    textarea{
+        font-size:8px;
+    }
+    .left-panel{
+        font-size:10px;
+    }
+}
+
+@media(max-height: 450px){
+    input, label, .widget p, .finished, .sum{
+        font-size:4px;
+    }
+    .finished{
+        width:10px;
+    }
+}
+
+
 
 @media (max-width: 1625px) {
     .header-item{
@@ -340,8 +425,6 @@ body{
         max-width:75px;
         font-size:9px;
     }
-
-
     .primary{
         height:300px;
     }
@@ -396,8 +479,14 @@ body{
     .left-panel{
         display:none;
     }
+    #footer{
+        left:0;
+    }
     body{
         padding-left:0;
+    }
+    .widget{
+        font-size:12px;
     }
 }
 @media (max-width: 1000px) {
@@ -443,4 +532,5 @@ body{
     .description{
         font-size: 10px;
     }
+
 }
