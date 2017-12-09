@@ -15,7 +15,10 @@ $(function(){
         else flights=data;
         changeFlight();
     });
-
+    var $flight = $("#flight");
+    var date = document.getElementById("date");
+    var $price=$("#price");
+    var currentPrice=0;
 
 
 
@@ -49,10 +52,7 @@ $(function(){
         return false;
     }
 
-    var $flight = $("#flight");
-    var date = document.getElementById("date");
-    var $price=$("#price");
-    var currentPrice=0;
+
 
     $flight.change(function () {
         count=0;
@@ -82,6 +82,15 @@ $(function(){
     $(".close").click(function () {
         $(".widget").removeClass("enabled");
         count=0;
+        $client.val("");
+        $client.css("box-shadow", "none");
+        $clientPhone.val("");
+        $clientPhone.css("box-shadow", "none");
+        $clientMail.val("");
+        $clientMail.css("box-shadow", "none");
+        $clientAddress.val("");
+        $clientAddress.css("box-shadow", "none");
+        $price.css("box-shadow", "none");
         window.setTimeout(function(){
             $(".widget").hide();
             $("#background").hide();
@@ -189,6 +198,7 @@ $(function(){
 
     function updatePrice(){
         $price.text(count*currentPrice*25+" грн");
+        if(count>0)$price.css("box-shadow", "none");
     }
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect(), // abs. size of element
@@ -251,15 +261,15 @@ $(function(){
         }, 1);
         $("#background").show();
     });
+    var $client=$("#client");
+    var $clientPhone=$("#tel");
+    var $clientMail=$("#mail");
+    var $clientAddress=$("#address");
 
     $("#order").click(function(){
         event.preventDefault();
         var suc=true;
-        var $client=$("#client");
-        var $clientPhone=$("#tel");
-        var $clientMail=$("#mail");
-        var $clientAddress=$("#address");
-        var $price=$("#price");
+
 
         var name = $client.val();
         if(name===""){
@@ -294,16 +304,21 @@ $(function(){
             $price.css("box-shadow", "0 0 3px #CC0000");
             suc=false;
         }
-        else $price.css("box-shadow", "0 0 0 #000000");
+        else $price.css("box-shadow", "0 0 0 none");
 
         if(suc) {
+            var tickets;
+            if(count===1)tickets=" квиток";
+            else if(count>1 && count<=4)tickets=" квитка";
+            else tickets=" квитків";
+            var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$("#date").find(":selected").text()+";\n"+count+tickets+";\n";
             var order_info = {
                 name: name,
                 phone: phone,
                 address: address,
                 email: mail,
                 cost: cost,
-                flight:""
+                flight: flightDetails
             };
             API.createOrder(order_info, function (error, data) {
                 if (error) alert(error);
@@ -314,6 +329,108 @@ $(function(){
 
         }
     });
+
+    $client.bind("keypress", function(event){
+        var regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'/ -]+$");
+        var key=String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $client.bind("keydown", function(event){
+        window.setTimeout(function() {
+            if($client.val()===""){
+                $client.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $client.css("box-shadow", "0 0 3px #006600");
+        }, 0);
+    });
+
+    $clientPhone.bind("keypress", function(event){
+        var regex;
+        var key;
+        var text=$(this).val();
+        switch(text.length){
+            case 0:
+                regex=new RegExp("[0+]");
+                break;
+            case 1:
+                if(text.charAt(0)!=='0') {
+                    regex = new RegExp("[3]");
+                    break;
+                }
+            case 2:
+                if(text.charAt(0)!=='0') {
+                    regex = new RegExp("[8]");
+                    break;
+                }
+            case 3:
+                if(text.charAt(0)!=='0') {
+                    regex = new RegExp("[0]");
+                    break;
+                }
+            default:
+                regex = new RegExp("[0-9]");
+        }
+        key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key) || (text.charAt(0)==='0' && text.length===10) || (text.charAt(0)==='+' && text.length===13)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $clientPhone.bind("keydown", function(event){
+        window.setTimeout(function() {
+            if ($clientPhone.val() === "" || ($clientPhone.val().charAt(0) === '+' && $clientPhone.val().length < 13) || ($clientPhone.val().charAt(0) === '0' && $clientPhone.val().length < 10)) {
+                $clientPhone.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $clientPhone.css("box-shadow", "0 0 3px #006600");
+        });
+    });
+
+    $clientMail.bind("keypress", function(event){
+        var regex;
+        var key;
+        regex = new RegExp("^[0-9A-Za-z@.]+$");
+        key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $clientMail.bind("keydown", function(event){
+        window.setTimeout(function() {
+            if ($clientMail.val() === "" || $clientMail.val().length < 5 || $clientMail.val().indexOf('@')===-1 || $clientMail.val().indexOf('.')===-1) {
+                $clientMail.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $clientMail.css("box-shadow", "0 0 3px #006600");
+        });
+    });
+
+    $clientAddress.bind("keypress", function(event){
+        var regex;
+        var key;
+        regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'.,/ -]+$");
+        key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $clientAddress.bind("keydown", function(event){
+        window.setTimeout(function() {
+            if ($clientAddress.val() === "" || $clientAddress.val().length < 1) {
+                $clientAddress.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $clientAddress.css("box-shadow", "0 0 3px #006600");
+        });
+    });
+
+
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;
