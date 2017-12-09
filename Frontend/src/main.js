@@ -259,6 +259,7 @@ $(function(){
         var $clientPhone=$("#tel");
         var $clientMail=$("#mail");
         var $clientAddress=$("#address");
+        var $price=$("#price");
 
         var name = $client.val();
         if(name===""){
@@ -288,13 +289,20 @@ $(function(){
         }
         else $clientAddress.css("box-shadow", "0 0 3px #006600");
 
+        var cost=parseInt($price.text().split(" ")[0]);
+        if(cost===0){
+            $price.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $price.css("box-shadow", "0 0 0 #000000");
+
         if(suc) {
             var order_info = {
                 name: name,
                 phone: phone,
                 address: address,
                 email: mail,
-                cost: parseInt($("#price").text().split(" ")[0]),
+                cost: cost,
                 flight:""
             };
             API.createOrder(order_info, function (error, data) {

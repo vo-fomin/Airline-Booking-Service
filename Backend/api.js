@@ -5,6 +5,7 @@ var LIQPAY_PRIVATE_KEY='aFTFKaoKRdqK0eZZaXqFoT8pmt8HdAxggFs0i6yn';
 
 var email=require('./email');
 
+var confirmation;
 function base64(str)	 {
     return new Buffer(str).toString('base64');
 }
@@ -18,6 +19,10 @@ function sha1(string) {
 
 exports.getFlights = function(req, res) {
     res.send(Flights);
+};
+
+exports.sendMail=function(req, res){
+    email.sendMail(confirmation.email, confirmation.name, confirmation.code);
 };
 
 
@@ -41,7 +46,11 @@ exports.createOrder = function(req, res) {
     };
     var data	=	base64(JSON.stringify(order));
     var signature = sha1(LIQPAY_PRIVATE_KEY + data + LIQPAY_PRIVATE_KEY);
-    email.sendMail(order_info.email, order_info.name, order.order_id);
+    confirmation={
+        email: order_info.email,
+        name: order_info.name,
+        code: parseInt(order.order_id*100000000)
+    };
     res.send({
         status: true,
         data:data,

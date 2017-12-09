@@ -36,6 +36,10 @@ exports.getFlights = function(callback) {
 exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
 };
+
+exports.sucAlert=function(alert_data, callback){
+    backendPost("/api/send-alert/", alert_data, callback);
+};
 },{}],2:[function(require,module,exports){
 var map;
 
@@ -318,6 +322,7 @@ $(function(){
         var $clientPhone=$("#tel");
         var $clientMail=$("#mail");
         var $clientAddress=$("#address");
+        var $price=$("#price");
 
         var name = $client.val();
         if(name===""){
@@ -347,13 +352,20 @@ $(function(){
         }
         else $clientAddress.css("box-shadow", "0 0 3px #006600");
 
+        var cost=parseInt($price.text().split(" ")[0]);
+        if(cost===0){
+            $price.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $price.css("box-shadow", "0 0 0 #000000");
+
         if(suc) {
             var order_info = {
                 name: name,
                 phone: phone,
                 address: address,
                 email: mail,
-                cost: parseInt($("#price").text().split(" ")[0]),
+                cost: cost,
                 flight:""
             };
             API.createOrder(order_info, function (error, data) {
@@ -380,6 +392,7 @@ $(function(){
     };
 });
 },{"./API":1,"./googleMaps":2,"./payment":4}],4:[function(require,module,exports){
+var sender=require("./API");
 
 var create = function (data, signature) {
     var suc;
@@ -391,17 +404,17 @@ var create = function (data, signature) {
     }).on("liqpay.callback", function (data) {
         console.log(data.status);
         console.log(data);
+        if(data.status!=="failure")sender.sucAlert();
         suc=data.result==="success";
     }).on("liqpay.ready", function (data) {
 //	ready
     }).on("liqpay.close", function (data) {
 //	close
         if(suc) {
-            alert("Транзакція успішна!\n    Дякуємо за купівлю!:)");
             window.location.href = '/';
         }
     });
 };
 
 exports.create=create;
-},{}]},{},[3]);
+},{"./API":1}]},{},[3]);

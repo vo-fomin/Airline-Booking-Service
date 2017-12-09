@@ -11,6 +11,7 @@ function configureEndpoints(app) {
     //Отримання списку піц
     app.get('/api/get-flights/', api.getFlights);
     app.post('/api/create-order/', api.createOrder);
+    app.post('/api/send-alert/', api.sendMail);
 
     //Сторінки
     //Головна сторінка

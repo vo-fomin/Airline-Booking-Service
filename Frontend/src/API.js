@@ -35,3 +35,7 @@ exports.getFlights = function(callback) {
 exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
 };
+
+exports.sucAlert=function(alert_data, callback){
+    backendPost("/api/send-alert/", alert_data, callback);
+};
