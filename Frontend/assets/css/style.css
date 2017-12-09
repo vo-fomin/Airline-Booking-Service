@@ -252,9 +252,9 @@ form{
 }
 .sum{
     position:absolute;
-    bottom:80px;
-    right:40px;
-    width:100px;
+    bottom:10.2%;
+    right:10%;
+    width:10%;
 }
 .finished{
     position:absolute;
@@ -306,6 +306,9 @@ form{
     .left-panel{
         font-size:12px;
     }
+    .sum h3{
+        font-size:20px;
+    }
 }
 
 @media(max-height: 650px){
@@ -324,6 +327,9 @@ form{
     .left-panel{
         font-size:11px;
     }
+    .sum h3{
+        font-size:16px;
+    }
 }
 
 @media(max-height: 550px){
@@ -333,8 +339,8 @@ form{
     form{
         margin-top:-3%;
     }
-    .finished{
-        width:20px;
+    .sum h3{
+        font-size:14px;
     }
     textarea{
         font-size:8px;
