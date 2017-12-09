@@ -139,6 +139,7 @@ $(function(){
 
     $(".close").click(function () {
         $(".widget").removeClass("enabled");
+        count=0;
         window.setTimeout(function(){
             $(".widget").hide();
             $("#background").hide();
