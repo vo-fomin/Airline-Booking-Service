@@ -1,8 +1,8 @@
 body{
     background:lightgray;
     position:relative;
-    padding-left:250px;
-    padding-bottom:40px;
+    /*padding-left:250px;
+    padding-bottom:40px;*/
     overflow-x: hidden;
 }
 #header{
@@ -63,24 +63,21 @@ body{
     position:relative;
     background: gray;
 }
-.description{
-    position:absolute;
-    font-weight: 500;
-    right:8%;
-    top:1%;
-    width:30%;
-}
 .left-panel{
     padding-top: 10px;
-    left:0;
-    top:90px;
-    position:fixed;
-    z-index:2000;
-    width:250px;
-    height:100%;
-    background:white;
-    overflow-x:hidden;
-    overflow-y:auto;
+    left: 0;
+    top: 90px;
+    position: fixed;
+    z-index: 2000;
+    width: 30%;
+    height: 100%;
+    background: white;
+    overflow-x: hidden;
+    margin-right: 2%;
+}
+.right-column {
+    padding-left: 31%;
+    padding-right: 0;
 }
 .menu-level{
     margin-left: 10px;
@@ -114,11 +111,12 @@ body{
 
 }
 #content{
-    width:70%;
-    margin-top:10px;
+    width: 70%;
+    margin-top: 1%;
     margin-left: 15%;
-    background:white;
-    border:solid 1px darkgray;
+    background: white;
+    border: solid 1px darkgray;
+    margin-bottom: 40px;
 }
 
 .option{
@@ -193,13 +191,13 @@ body{
     width:127px;
 }
 
-#footer{
-    position:absolute;
-    bottom:0;
-    height:30px;
-    right:0;
-    left:250px;
-    color:darkgray;
+#footer {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    right: 0;
+    left: 31%;
+    color: darkgray;
     text-align: center;
     padding-bottom: 20px;
 }
@@ -230,6 +228,15 @@ body{
     margin:auto;
     opacity:0;
     transition: opacity 0.3s ease-in;
+}
+.description {
+    position: absolute;
+    font-weight: 500;
+    left: 8%;
+    bottom: 10%;
+    color: white;
+    font-size: 40px;
+    font-family: "Monotype Corsiva";
 }
 .enabled{
     opacity: 1;
@@ -420,6 +427,9 @@ form{
     }
 }
 @media (max-width: 1225px) {
+    .description {
+        font-size: 30px;
+    }
     .header-item{
         font-size: 16px;
         margin-right:8.5%;
@@ -488,8 +498,9 @@ form{
     #footer{
         left:0;
     }
-    body{
-        padding-left:0;
+    .right-column{
+        padding-left: 0;
+        padding-right: 0;
     }
     .widget{
         font-size:12px;
