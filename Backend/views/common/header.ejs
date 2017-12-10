@@ -5,5 +5,110 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href=<%= style%>>
+    <link rel="stylesheet" href=<%= style%>
+    <!-- LESS основний файл -->
+
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 </head>
+
+<body>
+<div id="header">
+    <img src="images/Logo2.png" id="logo">
+    <span class="header-phones">
+        <span>(044) 343-21-32</span>
+        <br>
+        <span>(066) 921-34-11</span>
+    </span>
+    <button id="mainPage" class="header-item">Головна</button>
+    <button id="infoPage" class="header-item">Інформація</button>
+    <button id="servicePage" class="header-item">Послуги</button>
+    <button id="contactPage" class="header-item">Контакты</button>
+
+</div>
+
+<div id="details" class="widget">
+    <button class="close">X</button>
+    <div style="margin-left: 5%;margin-top: 5%;margin-right: 5%;">
+        Нашій компанії вже 10 років. Всі ці роки ми допомагаємо нашим клієнтам запланувати їх подорож з будь-якої точки України.
+        Ми співпрацюємо зі всіма аеропортами України і пропонуємо гнучкий і широкий перелік налаштувань який дозволить
+        вам зіставити свій план зручний для вас.
+    </div>
+</div>
+
+<div id="service" class="widget">
+    <button class="close">X</button>
+    <div style="margin-left: 5%;margin-top: 5%;margin-right: 5%;">
+        Ми пропонуємо нашим клієнтам легке бронювання квитків на будь-які рейси до будь-яких країн зі всіх аеропортів України.<br>
+        Якщо в вас виникли питання по сайту, ви можете замовити виклик оператора, який зв'яжеться з вами.<br>
+        У разі, якщо ви не задоволені нашим сервісом - надсилайте нам скаргу! Ми завжди сприймаємо конструктивну критику і стаємо кращими.<br>
+        Вже 10 млн. українців скористалися нашими послугами і залишилися задоволеними. Будьте наступним!
+    </div>
+</div>
+
+<div id="contact" class="widget">
+    <button class="close">X</button>
+    <div id="googleMap"></div>
+    <div style="margin-left: 8%;">
+        Ми розташовані за адресою <i>вул. Григорія Сковороди 2, Київ, Україна</i><br>
+        <b>Контактні номера телефонів:</b>
+        <ul>
+            <li>(066) 921-34-11</li>
+            <li>(044) 343-21-32</li>
+        </ul>
+    </div>
+</div>
+
+<div id="book" class="widget">
+    <button class="close">X</button>
+    <img id="scheme" src="images/Scheme.svg" style="display: none">
+
+    <canvas id="plane" width="1500" height="800">
+
+    </canvas>
+    <form>
+        <label>Рейс:
+            <select id="flight">
+                <option value="paris" selected="selected">Київ - Париж</option>
+                <option value="warsaw">Київ - Варшава</option>
+                <option value="lviv">Київ - Львів</option>
+                <option value="newyork">Київ - Нью-Йорк</option>
+                <option value="london">Київ - Лондон</option>
+                <option value="berlin">Київ - Берлін</option>
+                <option value="rome">Київ - Рим</option>
+            </select>
+        </label>
+        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
+        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
+        <label>Адреса: <input type="text" pattern="{1,}"></label>
+        <button class="finished active btn btn-info">Далі</button>
+    </form>
+</div>
+
+<div id="phone" class="widget">
+    <button class="close">X</button>
+    <div style="margin-left:5%;width:90%;text-align: center;">
+        <img src="images/phone-answering-service.png" style="display:block;width:90%;height:80%; margin-left:5%;">
+        <p style="display:block;margin-top:5%;margin-bottom:10%;">Введіть ваші телефон й ім'я та ми вам передзвонимо!</p>
+    </div>
+    <form>
+        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
+        <button class="finished active btn btn-info">Далі</button>
+    </form>
+</div>
+
+<div id="complain" class="widget">
+    <button class="close">X</button>
+    <form>
+        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
+        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
+        <label>Адреса: <input type="text" pattern="{1,}"></label>
+        <label>Скарга: <br><textarea rows="15" cols="65" style="resize: none; margin-left:10px;"></textarea></label>
+        <button class="finished active btn btn-info">Далі</button>
+    </form>
+</div>
+
+<div id="background"></div>
