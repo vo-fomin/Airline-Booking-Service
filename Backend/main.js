@@ -10,13 +10,14 @@ function configureEndpoints(app) {
     //Налаштування URL за якими буде відповідати сервер
     //Отримання списку піц
     app.get('/api/get-flights/', api.getFlights);
-    app.get('/api/get-client-data/', api.getClientData);
-    app.post('/api/create-order/', api.createOrder);
-    app.post('/api/send-mail/', api.sendMail);
+    //app.post('/api/create-order/', api.createOrder);
 
     //Сторінки
     //Головна сторінка
     app.get('/', pages.mainPage);
+
+    //Сторінка замовлення
+    //app.get('/order.html', pages.orderPage);
 
     //Якщо не підійшов жоден url, тоді повертаємо файли з папки www
     app.use(express.static(path.join(__dirname, '../Frontend/assets')));
