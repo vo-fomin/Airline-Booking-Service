@@ -14,7 +14,7 @@ function backendGet(url, callback) {
     })
 }
 
-/*function backendPost(url, data, callback) {
+function backendPost(url, data, callback) {
     $.ajax({
         url: API_URL + url,
         type: 'POST',
@@ -27,31 +27,55 @@ function backendGet(url, callback) {
             callback(new Error("Ajax Failed"));
         }
     })
-}*/
+}
 
 exports.getFlights = function(callback) {
     backendGet("/api/get-flights/", callback);
 };
 
-/*exports.createOrder = function(order_info, callback) {
+exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
-};*/
+};
+
+exports.sendMail=function(data, callback){
+    backendPost("/api/send-mail/", data, callback);
+};
+
+exports.getClientData=function(callback){
+    backendGet("/api/get-client-data/", callback);
+};
 },{}],2:[function(require,module,exports){
 var map;
 
 function initialize() {
     var mapProp = {
-        center: new google.maps.LatLng(50.464379, 30.519131),
-        zoom: 14
+        center: new google.maps.LatLng(50.454379, 30.519131),
+        zoom: 11
     };
     var html_element = document.getElementById("googleMap");
     map = new google.maps.Map(html_element, mapProp);
-    var point = new google.maps.LatLng(50.464379, 30.519131);
-    var marker = new google.maps.Marker({
-        position: point,
-//map - це змінна карти створена за допомогою new google.maps.Map(...)
+    var arrayPoints=[
+        new google.maps.LatLng(50.444379, 30.519131),
+        new google.maps.LatLng(50.504379, 30.499931),
+        new google.maps.LatLng(50.402379, 30.635131)
+    ];
+    var arrayMarkers=[
+        new google.maps.Marker({
+        position: arrayPoints[0],
+        //map - це змінна карти створена за допомогою new google.maps.Map(...)
         map: map
-    });
+        }),
+        new google.maps.Marker({
+            position: arrayPoints[1],
+            //map - це змінна карти створена за допомогою new google.maps.Map(...)
+            map: map
+        }),
+        new google.maps.Marker({
+            position: arrayPoints[2],
+            //map - це змінна карти створена за допомогою new google.maps.Map(...)
+            map: map
+        })
+    ];
 //Карта створена і показана
 }
 
@@ -65,33 +89,62 @@ $(function(){
 
     var sits = new Array(40);
     var flights = null;
+    var dates=null;
+    var count=0;
     var API=require('./API');
+    var Pay=require('./payment');
     API.getFlights(function (error, data){
         if(error)alert(error);
         else flights=data;
-        init();
+        changeFlight();
     });
+    var $flight = $("#flight");
+    var date = document.getElementById("date");
+    var $price=$("#price");
+    var currentPrice=0;
 
 
 
-
-    function find(dest) {
+    function fillDates(dest) {
         for (var i = 0; i < flights.length; i++) {
-            if (flights[i].dest === dest) return flights[i].taken;
+            if (flights[i].dest === dest) {
+                dates=flights[i].dates;
+                $("#date").empty();
+                for(var j=0;j<dates.length;j++){
+                    date.add(new Option(dates[j].date, dates[j].date, j === 0, j === 0));
+                }
+                break;
+            }
+        }
+    }
+    function getTaken(date) {
+        for (var i = 0; i < dates.length; i++) {
+            if (dates[i].date === date){
+                currentPrice=dates[i].price;
+                return dates[i].taken;
+            }
         }
     }
 
     function check(j, taken) {
-        for (var i = 0; i < taken.length; i++) {
-            if (taken[i] === j) return true;
+        if(taken) {
+            for (var i = 0; i < taken.length; i++) {
+                if (taken[i] === j) return true;
+            }
         }
         return false;
     }
 
-    var $flight = $("#flight");
+
 
     $flight.change(function () {
-        init();
+        count=0;
+        changeFlight();
+    });
+
+    $("#date").change(function(){
+        count=0;
+        changeDate();
     });
 
     var plane = document.getElementById('scheme');
@@ -111,17 +164,30 @@ $(function(){
 
     $(".close").click(function () {
         $(".widget").removeClass("enabled");
+        count=0;
+        $(".nameInput").val("");
+        $(".nameInput").css("box-shadow", "none");
+        $(".phoneInput").val("");
+        $(".phoneInput").css("box-shadow", "none");
+        $(".mailInput").val("");
+        $(".mailInput").css("box-shadow", "none");
+        $(".addressInput").val("");
+        $(".addressInput").css("box-shadow", "none");
+        $price.css("box-shadow", "none");
         window.setTimeout(function(){
             $(".widget").hide();
             $("#background").hide();
         }, 300);
     });
 
-    function init() {
-        var bool;
+    function changeFlight() {
+        var bool, flight, date;
         for (var i = 210, n = 0; i <= 740; i += 50) {
             for (var j = 585; j <= 810; j += 70) {
-                bool = check(n, find($flight.find(":selected").val()));
+                flight=$flight.find(":selected").val();
+                fillDates(flight);
+                date=$("#date").find(":selected").val();
+                bool = check(n, getTaken(date));
                 sits[n++] = {
                     x: j,
                     y: i,
@@ -136,7 +202,30 @@ $(function(){
             if (i === 530 || i === 360) i += 20;
         }
         redraw();
+        updatePrice();
+    }
 
+    function changeDate(){
+        var bool, date;
+        for (var i = 210, n = 0; i <= 740; i += 50) {
+            for (var j = 585; j <= 810; j += 70) {
+                date=$("#date").find(":selected").val();
+                bool = check(n, getTaken(date));
+                sits[n++] = {
+                    x: j,
+                    y: i,
+                    w: 60,
+                    h: 40,
+                    br: 6,
+                    taken: bool,
+                    marked: false
+                };
+                if (j === 655) j += 15;
+            }
+            if (i === 530 || i === 360) i += 20;
+        }
+        redraw();
+        updatePrice();
     }
 
     $("#oBook").click(function () {
@@ -146,7 +235,7 @@ $(function(){
         }, 1);
         $("#background").show();
         context = canvas.getContext('2d');
-        init();
+        changeFlight();
     });
 
     var mousePos;
@@ -173,16 +262,27 @@ $(function(){
         redraw();
         for (var k = 0; k < sits.length; k++) {
             if (mousePos.x >= sits[k].x && mousePos.x <= sits[k].x + sits[k].w && mousePos.y >= sits[k].y && mousePos.y <= sits[k].y + sits[k].h && !sits[k].taken) {
-                if (!sits[k].marked) context.fillStyle = 'gray';
-                else context.fillStyle = 'lightgray';
+                if (!sits[k].marked){
+                    context.fillStyle = 'gray';
+                    count++;
+                }
+                else {
+                    context.fillStyle = 'lightgray';
+                    count--;
+                }
                 sits[k].marked = !sits[k].marked;
                 context.roundRect(sits[k].x, sits[k].y, sits[k].w, sits[k].h, sits[k].br).fill();
                 break;
             }
         }
+        updatePrice();
     });
 
 
+    function updatePrice(){
+        $price.text(count*currentPrice*25+" грн");
+        if(count>0)$price.css("box-shadow", "none");
+    }
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect(), // abs. size of element
             scaleX = canvas.width / rect.width,    // relationship bitmap vs. element for X
@@ -245,6 +345,217 @@ $(function(){
         $("#background").show();
     });
 
+    var $client=$("#client");
+    var $clientPhone=$("#tel");
+    var $clientMail=$("#mail");
+    var $clientAddress=$("#address");
+
+    var $client2=$("#client2");
+    var $clientMail2=$("#mail2");
+    var $clientPhone2=$("#tel2");
+
+    var $client3=$("#client3");
+    var $clientPhone3=$("#tel3");
+    var $clientMail3=$("#mail3");
+    var $clientAddress3=$("#address3");
+
+    $("#order").click(function(){
+        event.preventDefault();
+        var suc=true;
+
+
+        var name = $client.val();
+        if(name===""){
+            $client.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $client.css("box-shadow", "0 0 3px #006600");
+
+        var phone = $clientPhone.val();
+        if(phone==="" || (phone.charAt(0)==='+' && phone.length<13) || (phone.charAt(0)==='0' && phone.length<10)){
+            $clientPhone.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientPhone.css("box-shadow", "0 0 3px #006600");
+
+        var mail = $clientMail.val();
+        if(mail===""){
+            $clientMail.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientMail.css("box-shadow", "0 0 3px #006600");
+
+        var address = $clientAddress.val();
+        if(address===""){
+            $clientAddress.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientAddress.css("box-shadow", "0 0 3px #006600");
+
+        var cost=parseInt($price.text().split(" ")[0]);
+        if(cost===0){
+            $price.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $price.css("box-shadow", "0 0 0 none");
+
+        if(suc) {
+            var tickets;
+            if(count===1)tickets=" квиток";
+            else if(count>1 && count<=4)tickets=" квитка";
+            else tickets=" квитків";
+            var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$("#date").find(":selected").text()+";\n"+count+tickets+";\n";
+            var order_info = {
+                name: name,
+                phone: phone,
+                address: address,
+                email: mail,
+                cost: cost,
+                flight: flightDetails
+            };
+            API.createOrder(order_info, function (error, data) {
+                if (error) alert(error);
+                else {
+                    window.LiqPayCheckoutCallback=Pay.create(data.data, data.signature);
+                }
+            });
+
+        }
+    });
+
+    $(".nameInput").bind("keypress", function(event){
+        var regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'/ -]+$");
+        var key=String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $(".nameInput").bind("keydown", function(event){
+        window.setTimeout(function() {
+            var $name;
+            if(!$client.is(':hidden'))$name=$client;
+            else if(!$client2.is(':hidden'))$name=$client2;
+            else $name=$client3;
+            if($name.val()===""){
+                $name.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $name.css("box-shadow", "0 0 3px #006600");
+        }, 0);
+    });
+
+    $(".phoneInput").bind("keypress", function(event){
+        var regex;
+        var key;
+        var text=$(this).val();
+        switch(text.length){
+            case 0:
+                regex=new RegExp("[0+]");
+                break;
+            case 1:
+                if(text.charAt(0)!=='0') {
+                    regex = new RegExp("[3]");
+                    break;
+                }
+            case 2:
+                if(text.charAt(0)!=='0') {
+                    regex = new RegExp("[8]");
+                    break;
+                }
+            case 3:
+                if(text.charAt(0)!=='0') {
+                    regex = new RegExp("[0]");
+                    break;
+                }
+            default:
+                regex = new RegExp("[0-9]");
+        }
+        key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key) || (text.charAt(0)==='0' && text.length===10) || (text.charAt(0)==='+' && text.length===13)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $(".phoneInput").bind("keydown", function(event){
+        window.setTimeout(function() {
+            var $phone;
+            if(!$clientPhone.is(':hidden'))$phone=$clientPhone;
+            else if(!$clientPhone2.is(':hidden'))$phone=$clientPhone2;
+            else $phone=$clientPhone3;
+            if ($phone.val() === "" || ($phone.val().charAt(0) === '+' && $phone.val().length < 13) || ($phone.val().charAt(0) === '0' && $phone.val().length < 10)) {
+                $phone.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $phone.css("box-shadow", "0 0 3px #006600");
+        });
+    });
+
+    $(".mailInput").bind("keypress", function(event){
+        var regex;
+        var key;
+        regex = new RegExp("^[0-9A-Za-z@.]+$");
+        key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $(".mailInput").bind("keydown", function(event){
+        window.setTimeout(function() {
+            var $mail;
+            if(!$clientMail.is(':hidden'))$mail=$clientMail;
+            else if(!$clientMail2.is(':hidden'))$mail=$clientMail2;
+            else $mail=$clientMail3;
+            if ($mail.val() === "" || $mail.val().length < 5 || $mail.val().indexOf('@')===-1 || $mail.val().indexOf('.')===-1) {
+                $mail.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $mail.css("box-shadow", "0 0 3px #006600");
+        });
+    });
+
+    $(".addressInput").bind("keypress", function(event){
+        var regex;
+        var key;
+        regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'.,/ -]+$");
+        key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if(!regex.test(key)){
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    $(".addressInput").bind("keydown", function(event){
+        window.setTimeout(function() {
+            var $address;
+            if(!$clientAddress.is(':hidden'))$address=$clientAddress;
+            else $address=$clientAddress3;
+            if ($address.val() === "" || $address.val().length < 1) {
+                $address.css("box-shadow", "0 0 3px #CC0000");
+            }
+            else $address.css("box-shadow", "0 0 3px #006600");
+        });
+    });
+
+    $("#sendComplaint").click(function(){
+        API.sendMail({
+            to:$clientMail3.val(),
+            subject: 'Скаргу отримано',
+            message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми отримали вашу скаргу й обов'язково розглянемо її!"
+        }
+        );
+    });
+
+    $("#orderCall").click(function(){
+        API.sendMail({
+                to:$clientMail2.val(),
+                subject: 'Заяву отримано',
+                message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми вам зателефонуємо найближчим часом!"
+            }
+        );
+    });
+
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;
         if (h < 2 * r) r = h / 2;
@@ -258,4 +569,43 @@ $(function(){
         return this;
     };
 });
-},{"./API":1,"./googleMaps":2}]},{},[3]);
+},{"./API":1,"./googleMaps":2,"./payment":4}],4:[function(require,module,exports){
+var sender=require("./API");
+
+var create = function (data, signature) {
+    var suc;
+    LiqPayCheckout.init({
+        data: data,
+        signature: signature,
+        embedTo: "#liqpay",
+        mode: "popup"
+    }).on("liqpay.callback", function (data) {
+        console.log(data.status);
+        console.log(data);
+        if(data.status!=="failure") {
+            sender.getClientData(function(error, response){
+                if(error)alert(error);
+                else {
+                    console.log(response);
+                    sender.sendMail({
+                            to:response.email,
+                        subject:'Бронювання квитків',
+                        message:'Шановний(а) ' + response.name + '\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: ' + response.code
+                    }
+                    );
+                }
+            });
+        }
+        suc=data.result==="success";
+    }).on("liqpay.ready", function (data) {
+//	ready
+    }).on("liqpay.close", function (data) {
+//	close
+        if(suc) {
+            window.location.href = '/';
+        }
+    });
+};
+
+exports.create=create;
+},{"./API":1}]},{},[3]);

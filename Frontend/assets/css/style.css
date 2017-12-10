@@ -1,10 +1,10 @@
 body{
     background:lightgray;
     position:relative;
-   /* padding-left:250px;*/
- /*   padding-bottom:40px;*/
+    /* padding-left:250px;*/
+    /*   padding-bottom:40px;*/
     overflow-x: hidden;
-  min-width: 400px;
+    min-width: 400px;
 }
 #header{
     width:100%;
@@ -86,8 +86,8 @@ body{
 .left-panel{
     position: relative;
     padding-top: 10px;
-   left:0;
-   top:90px;
+    left:0;
+    top:90px;
     position:fixed;
     z-index:2000;
     width:30%;
@@ -219,6 +219,7 @@ body{
 
 }
 
+Oleksandra Radzievska, [10.12.17 19:32]
 #background{
     position:fixed;
     display: none;
@@ -441,7 +442,7 @@ body{
 
 @media (max-width: 900px) {
     #content {
-      width: 87%;
+        width: 87%;
         margin-left: 7%;
         margin-right: 7%;
     }
@@ -473,6 +474,7 @@ body{
         margin-right:4.5%;
     }
 
+    Oleksandra Radzievska, [10.12.17 19:32]
     .left-panel {
         display: none;
     }
@@ -504,7 +506,7 @@ body{
 }
 
 @media (max-width: 400px) {
-  row{
-       overflow-x: scroll;
-   }
+    row{
+        overflow-x: scroll;
+    }
 }
