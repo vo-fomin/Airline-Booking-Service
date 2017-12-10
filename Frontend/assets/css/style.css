@@ -366,20 +366,7 @@ form{
     }
 }
 
-
-
-@media (max-width: 1625px) {
-    .header-item{
-        margin-right:10.5%;
-    }
-    .gallery-item img{
-        height:100px;
-    }
-    .gallery-item p{
-        max-width:100px;
-        font-size:11px;
-    }
-
+@media (max-width: 1680px) {
     .primary{
         height:350px;
     }
@@ -424,6 +411,12 @@ form{
     #oComplain{
         width:110px;
         font-size: 10px;
+    }
+}
+
+@media (max-width: 1625px) {
+    .header-item{
+        margin-right:10.5%;
     }
 }
 @media (max-width: 1225px) {
