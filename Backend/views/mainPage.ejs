@@ -3,6 +3,8 @@
 <div id="header">
     <img src="images/Logo2.png" id="logo">
     <span class="header-phones">
+        <span style="font-size: 24px;font-weight: 500;">UA ABS</span>
+        <br>
         <span>(044) 343-21-32</span>
         <br>
         <span>(066) 921-34-11</span>
@@ -15,58 +17,59 @@
 </div>
 
 <div id="slider">
-    <div class="container">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-                <li data-target="#myCarousel" data-slide-to="3"></li>
-            </ol>
+    <div id="slider">
+        <div class="container">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="images/Plane.jpg" alt="Plane" style="width:100%;">
-                    <div class="description">
-                        Ми надаємо найкращі послуги в області бронювання квитків на авіапольоти в Україні!
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="images/slider0.jpg" alt="Plane" style="width:100%;">
+                        <div class="description">
+                            Ми надаємо найкращі послуги в області бронювання квитків на авіапольоти в Україні!
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/slider2.jpg" alt="Airport" style="width:100%;">
+                        <div class="description">
+                            Подорожуй для бізнесу та відпочинку!
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/slider1.png" alt="City" style="width:100%;">
+                        <div class="description">
+                            З нами ви можете спланувати свою подорож і витратити час лише на насолоду нею не хвилюючись про те, що щось не вдасться
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <img src="images/slider3.png" alt="Asian City" style="width:100%;">
+                        <div class="description">
+                            З нами ви можете спланувати поїздку в будь-яку частину світу! Ми гарантуємо, що ви залишитесь задоволеними нашими послугами!
+                        </div>
                     </div>
                 </div>
 
-                <div class="item">
-                    <img src="images/Airport.jpg" alt="Airport" style="width:100%;">
-                    <div class="description">
-                        Ми співпрацюємо зі всіма аеропортами України. Ми не обмежуємо наших клієнтів у виборі й завжди надаємо гнучкий набір налаштувань
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="images/City.jpg" alt="City" style="width:100%;">
-                    <div class="description">
-                        З нами ви можете спланувати свою подорож і витратити час лише на насолоду нею не хвилюючись про те, що щось не вдасться
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="images/Asian%20City.jpg" alt="Asian City" style="width:100%;">
-                    <div class="description">
-                        З нами ви можете спланувати поїздку в будь-яку частину світу! Ми гарантуємо, що ви залишитесь задоволеними нашими послугами!
-                    </div>
-                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-    </div>
 </div>
 
 <div id="content">
@@ -200,11 +203,16 @@
                 <option value="rome">Київ - Рим</option>
             </select>
         </label>
-        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
-        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
-        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
-        <label>Адреса: <input type="text" pattern="{1,}"></label>
-        <button class="finished active btn btn-info">Далі</button>
+        <label>Рейс:
+            <select id="date">
+            </select>
+        </label>
+        <label>ПІБ: <input type="text" class="nameInput" id="client"></label>
+        <label>E-mail: <input type="email" class="mailInput" id="mail"></label>
+        <label>Телефон: <input type="tel" class="phoneInput" id="tel"></label>
+        <label>Адреса: <input type="text" class="addressInput" id="address"></label>
+        <div class="sum"><h3>Ціна:</h3><span id="price">0 грн</span></div>
+        <button class="finished active btn btn-info" id="order">Далі</button>
     </form>
 </div>
 
@@ -215,22 +223,25 @@
         <p style="display:block;margin-top:5%;margin-bottom:10%;">Введіть ваші телефон й ім'я та ми вам передзвонимо!</p>
     </div>
     <form>
-        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
-        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
-        <button class="finished active btn btn-info">Далі</button>
+        <label>ПІБ: <input type="text" class="nameInput" id="client2"></label>
+        <label>E-mail: <input type="email" class="mailInput" id="mail2"></label>
+        <label>Телефон: <input type="tel" class="phoneInput" id="tel2"></label>
+        <button class="finished active btn btn-info" id="orderCall">Далі</button>
     </form>
 </div>
 
 <div id="complain" class="widget">
     <button class="close">X</button>
     <form>
-        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
-        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
-        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
-        <label>Адреса: <input type="text" pattern="{1,}"></label>
+        <label>ПІБ: <input type="text" class="nameInput" id="client3"></label>
+        <label>E-mail: <input type="email" class="mailInput" id="mail3"></label>
+        <label>Телефон: <input type="tel" class="phoneInput" id="tel3"></label>
+        <label>Адреса: <input type="text" class="addressInput" id="address3"></label>
         <label>Скарга: <br><textarea rows="15" cols="65" style="resize: none; margin-left:10px;"></textarea></label>
-        <button class="finished active btn btn-info">Далі</button>
+        <button class="finished active btn btn-info" id="sendComplaint">Далі</button>
     </form>
 </div>
+
+<div id="liqpay" style="z-index:9999999"></div>
 
 <% include common/footer.ejs %>
