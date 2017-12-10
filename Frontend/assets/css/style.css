@@ -1,10 +1,9 @@
 body{
     background:lightgray;
     position:relative;
-   /* padding-left:250px;*/
- /*   padding-bottom:40px;*/
+    padding-left:250px;
+    padding-bottom:40px;
     overflow-x: hidden;
-  min-width: 400px;
 }
 #header{
     width:100%;
@@ -68,33 +67,20 @@ body{
 .description{
     position:absolute;
     font-weight: 500;
-    left:8%;
-    bottom:10%;
-    color: white;
-    font-size: 40px;
-    font-family: "Monotype Corsiva";
-}
-
-.right-column{
-    padding-left: 31%;
-    padding-right: 0px;
-}
-
-#content{
-    margin-bottom: 40px;
+    right:8%;
+    top:1%;
+    width:30%;
 }
 .left-panel{
-    position: relative;
     padding-top: 10px;
-   left:0;
-   top:90px;
+    left:0;
+    top:90px;
     position:fixed;
     z-index:2000;
-    width:30%;
+    width:250px;
     height:100%;
     background:white;
     overflow-x:hidden;
-    margin-right: 2%;
 }
 .menu-level{
     margin-left: 10px;
@@ -129,7 +115,7 @@ body{
 }
 #content{
     width:70%;
-    margin-top:1%;
+    margin-top:10px;
     margin-left: 15%;
     background:white;
     border:solid 1px darkgray;
@@ -216,7 +202,6 @@ body{
     color:darkgray;
     text-align: center;
     padding-bottom: 20px;
-
 }
 
 #background{
@@ -400,7 +385,7 @@ body{
     }
 
     .description{
-        font-size: 30px;
+        font-size: 12px;
     }
 }
 @media (max-width: 1000px) {
@@ -438,73 +423,12 @@ body{
         padding-bottom: 1px;
     }
 }
-
-@media (max-width: 900px) {
-    #content {
-      width: 87%;
-        margin-left: 7%;
-        margin-right: 7%;
-    }
-}
-
 @media (max-width: 815px) {
     .header-item{
         font-size: 12px;
         margin-right:3.5%;
     }
     .description{
-        font-size: 20px;
-    }
-
-
-    #content {
-        margin-left: 2%;
-        margin-right: 2%;
-        width: 100%;
-    }
-}
-
-@media (max-width: 650px) {
-    .header-phones{
-        display: none;
-    }
-    .header-item{
-        font-size: 15px;
-        margin-right:4.5%;
-    }
-
-    .left-panel {
-        display: none;
-    }
-    .right-column{
-        padding-left: 0px;
-        padding-right: 0px;
-    }
-    #footer{
-        left:0px;
-
-    }
-
-    #content {
-        margin-left: 0px;
-    }
-
-
-}
-
-@media (max-width: 600px) {
-    .header-item{
-        font-size: 12px;
-        margin-right:2.5%;
-    }
-
-    .description{
         font-size: 10px;
     }
-}
-
-@media (max-width: 400px) {
-  row{
-       overflow-x: scroll;
-   }
 }

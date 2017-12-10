@@ -1,53 +1,19 @@
 <% include common/header.ejs %>
+<body>
+<div id="header">
+    <img src="images/Logo2.png" id="logo">
+    <span class="header-phones">
+        <span>(044) 343-21-32</span>
+        <br>
+        <span>(066) 921-34-11</span>
+    </span>
+    <button id="mainPage" class="header-item">Головна</button>
+    <button id="infoPage" class="header-item">Інформація</button>
+    <button id="servicePage" class="header-item">Послуги</button>
+    <button id="contactPage" class="header-item">Контакты</button>
 
-<div class="row">
+</div>
 
-    <div class="left-panel panel-group">
-        <div class="panel">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse1">Загальна інформація</a>
-                </h4>
-            </div>
-            <div id="collapse1" class="panel-collapse collapse in" aria-expanded="true">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a class="menu-item" onclick="$('#infoPage').click();">Деталі про нашу компанію</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="menu-item" onclick="$('#servicePage').click();">Інформація про послуги, що ми надаємо</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="menu-item" onclick="$('#contactPage').click();">Де нас знайти й як із нами зв'язатись</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="panel">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" href="#collapse2">Можливі дії</a>
-                </h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse in" aria-expanded="true">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a class="menu-item" onclick="$('#oBook').click();">Забронювати квиток</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="menu-item" onclick="$('#oPhone').click();">Замовити дзвінок</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a class="menu-item" onclick="$('#oComplain').click();">Відправити скаргу</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-
-<div class="right-column col-xs-12 ">
 <div id="slider">
     <div class="container">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -62,28 +28,28 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="images/slider0.jpg" alt="Plane" style="width:100%;">
+                    <img src="images/Plane.jpg" alt="Plane" style="width:100%;">
                     <div class="description">
                         Ми надаємо найкращі послуги в області бронювання квитків на авіапольоти в Україні!
                     </div>
                 </div>
 
                 <div class="item">
-                    <img src="images/slider2.jpg" alt="Airport" style="width:100%;">
+                    <img src="images/Airport.jpg" alt="Airport" style="width:100%;">
                     <div class="description">
-                       Подорожуй для бізнесу та відпочинку!
+                        Ми співпрацюємо зі всіма аеропортами України. Ми не обмежуємо наших клієнтів у виборі й завжди надаємо гнучкий набір налаштувань
                     </div>
                 </div>
 
                 <div class="item">
-                    <img src="images/slider1.png" alt="City" style="width:100%;">
+                    <img src="images/City.jpg" alt="City" style="width:100%;">
                     <div class="description">
                         З нами ви можете спланувати свою подорож і витратити час лише на насолоду нею не хвилюючись про те, що щось не вдасться
                     </div>
                 </div>
 
                 <div class="item">
-                    <img src="images/slider3.png" alt="Asian City" style="width:100%;">
+                    <img src="images/Asian%20City.jpg" alt="Asian City" style="width:100%;">
                     <div class="description">
                         З нами ви можете спланувати поїздку в будь-яку частину світу! Ми гарантуємо, що ви залишитесь задоволеними нашими послугами!
                     </div>
@@ -132,8 +98,139 @@
         <button id="oComplain" class="btn btn-sm btn-warning">Відправити скаргу</button>
     </div>
 </div>
-    <div id="footer">&copy; UA Airline Booking Service</div>
+
+<div class="left-panel panel-group">
+    <div class="panel">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1">Загальна інформація</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse in" aria-expanded="true">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$logo.click();">Головна сторінка</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$('#infoPage').click();">Деталі про нашу компанію</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$('#servicePage').click();">Інформація про послуги, що ми надаємо</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$('#contactPage').click();">Де нас знайти й як із нами зв'язатись</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse2">Можливі дії</a>
+            </h4>
+        </div>
+        <div id="collapse2" class="panel-collapse collapse in" aria-expanded="true">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$('#oBook').click();">Забронювати квиток</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$('#oPhone').click();">Замовити дзвінок</a>
+                </li>
+                <li class="list-group-item">
+                    <a class="menu-item" onclick="$('#oComplain').click();">Відправити скаргу</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+<div id="footer">&copy; UA Airline Booking Service</div>
+
+<div id="background"></div>
+
+<div id="details" class="widget">
+    <button class="close">X</button>
+    <div style="margin-left: 5%;margin-top: 5%;margin-right: 5%;">
+        Нашій компанії вже 10 років. Всі ці роки ми допомагаємо нашим клієнтам запланувати їх подорож з будь-якої точки України.
+        Ми співпрацюємо зі всіма аеропортами України і пропонуємо гнучкий і широкий перелік налаштувань який дозволить
+        вам зіставити свій план зручний для вас.
+    </div>
+</div>
+
+<div id="service" class="widget">
+    <button class="close">X</button>
+    <div style="margin-left: 5%;margin-top: 5%;margin-right: 5%;">
+        Ми пропонуємо нашим клієнтам легке бронювання квитків на будь-які рейси до будь-яких країн зі всіх аеропортів України.<br>
+        Якщо в вас виникли питання по сайту, ви можете замовити виклик оператора, який зв'яжеться з вами.<br>
+        У разі, якщо ви не задоволені нашим сервісом - надсилайте нам скаргу! Ми завжди сприймаємо конструктивну критику і стаємо кращими.<br>
+        Вже 10 млн. українців скористалися нашими послугами і залишилися задоволеними. Будьте наступним!
+    </div>
+</div>
+
+<div id="contact" class="widget">
+    <button class="close">X</button>
+    <div id="googleMap"></div>
+    <div style="margin-left: 8%;">
+        Ми розташовані за адресою <i>вул. Григорія Сковороди 2, Київ, Україна</i><br>
+        <b>Контактні номера телефонів:</b>
+        <ul>
+            <li>(066) 921-34-11</li>
+            <li>(044) 343-21-32</li>
+        </ul>
+    </div>
+</div>
+
+<div id="book" class="widget">
+    <button class="close">X</button>
+    <img id="scheme" src="images/Scheme.svg" style="display: none">
+
+    <canvas id="plane" width="1500" height="800">
+
+    </canvas>
+    <form>
+        <label>Рейс:
+            <select id="flight">
+                <option value="paris" selected="selected">Київ - Париж</option>
+                <option value="warsaw">Київ - Варшава</option>
+                <option value="lviv">Київ - Львів</option>
+                <option value="newyork">Київ - Нью-Йорк</option>
+                <option value="london">Київ - Лондон</option>
+                <option value="berlin">Київ - Берлін</option>
+                <option value="rome">Київ - Рим</option>
+            </select>
+        </label>
+        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
+        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
+        <label>Адреса: <input type="text" pattern="{1,}"></label>
+        <button class="finished active btn btn-info">Далі</button>
+    </form>
+</div>
+
+<div id="phone" class="widget">
+    <button class="close">X</button>
+    <div style="margin-left:5%;width:90%;text-align: center;">
+        <img src="images/phone-answering-service.png" style="display:block;width:90%;height:80%; margin-left:5%;">
+        <p style="display:block;margin-top:5%;margin-bottom:10%;">Введіть ваші телефон й ім'я та ми вам передзвонимо!</p>
+    </div>
+    <form>
+        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
+        <button class="finished active btn btn-info">Далі</button>
+    </form>
+</div>
+
+<div id="complain" class="widget">
+    <button class="close">X</button>
+    <form>
+        <label>ПІБ: <input type="text" pattern="[A-Za-zА-Яа-я]{1,}"></label>
+        <label>E-mail: <input type="email" pattern="[0-9A-Za-z@.]{6,}"></label>
+        <label>Телефон: <input type="tel" pattern="[0-9]{1,}"></label>
+        <label>Адреса: <input type="text" pattern="{1,}"></label>
+        <label>Скарга: <br><textarea rows="15" cols="65" style="resize: none; margin-left:10px;"></textarea></label>
+        <button class="finished active btn btn-info">Далі</button>
+    </form>
 </div>
 
 <% include common/footer.ejs %>
