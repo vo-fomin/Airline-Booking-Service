@@ -13,6 +13,7 @@ function configureEndpoints(app) {
     app.get('/api/get-client-data/', api.getClientData);
     app.post('/api/create-order/', api.createOrder);
     app.post('/api/send-mail/', api.sendMail);
+    app.post('/api/send-tickets/', api.addTaken);
 
     //Сторінки
     //Головна сторінка

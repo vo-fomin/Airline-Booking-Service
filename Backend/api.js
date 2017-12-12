@@ -29,6 +29,20 @@ exports.sendMail=function(req, res){
     email.sendMail(req.body.to, req.body.subject, req.body.message);
 };
 
+exports.addTaken=function(req, res){
+    var tickets=req.body;
+    for(var i=0, j;i<Flights.length;i++){
+        if(Flights[i].dest===tickets.dest){
+            for(j=0;j<Flights[i].dates.length;j++){
+                if(Flights[i].dates[j].date===tickets.date){
+                    Flights[i].dates[j].taken=Flights[i].dates[j].taken.concat(tickets.taken);
+                    break;
+                }
+            }
+            break;
+        }
+    }
+};
 
 exports.createOrder = function(req, res) {
     var order_info = req.body;
@@ -53,7 +67,10 @@ exports.createOrder = function(req, res) {
     clientData={
         email: order_info.email,
         name: order_info.name,
-        code: parseInt(order.order_id*100000000)
+        code: parseInt(order.order_id*100000000),
+        dest: order_info.dest,
+        date: order_info.date,
+        taken: order_info.taken
     };
     res.send({
         status: true,

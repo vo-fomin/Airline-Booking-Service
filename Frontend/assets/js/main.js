@@ -41,6 +41,10 @@ exports.sendMail=function(data, callback){
     backendPost("/api/send-mail/", data, callback);
 };
 
+exports.sendTickets=function(data, callback){
+    backendPost("/api/send-tickets/", data, callback);
+};
+
 exports.getClientData=function(callback){
     backendGet("/api/get-client-data/", callback);
 };
@@ -405,13 +409,22 @@ $(function(){
             else if(count>1 && count<=4)tickets=" квитка";
             else tickets=" квитків";
             var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$("#date").find(":selected").text()+";\n"+count+tickets+";\n";
+            var ordered=[];
+            for(var i=0;i<sits.length;i++){
+                if(sits[i].marked)ordered.push(i);
+            }
+            var e=document.getElementById("flight");
+            var dest = e.options[e.selectedIndex].value;
             var order_info = {
                 name: name,
                 phone: phone,
                 address: address,
                 email: mail,
                 cost: cost,
-                flight: flightDetails
+                flight: flightDetails,
+                dest: dest,
+                date: $("#date").find(":selected").text(),
+                taken: ordered
             };
             API.createOrder(order_info, function (error, data) {
                 if (error) alert(error);
@@ -661,8 +674,12 @@ var create = function (data, signature) {
                             to:response.email,
                         subject:'Бронювання квитків',
                         message:'Шановний(а) ' + response.name + '\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: ' + response.code
-                    }
-                    );
+                    });
+                    sender.sendTickets({
+                        dest: response.dest,
+                        date: response.date,
+                        taken: response.taken
+                    });
                 }
             });
         }

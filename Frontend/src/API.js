@@ -40,6 +40,10 @@ exports.sendMail=function(data, callback){
     backendPost("/api/send-mail/", data, callback);
 };
 
+exports.sendTickets=function(data, callback){
+    backendPost("/api/send-tickets/", data, callback);
+};
+
 exports.getClientData=function(callback){
     backendGet("/api/get-client-data/", callback);
 };

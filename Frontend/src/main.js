@@ -322,13 +322,22 @@ $(function(){
             else if(count>1 && count<=4)tickets=" квитка";
             else tickets=" квитків";
             var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$("#date").find(":selected").text()+";\n"+count+tickets+";\n";
+            var ordered=[];
+            for(var i=0;i<sits.length;i++){
+                if(sits[i].marked)ordered.push(i);
+            }
+            var e=document.getElementById("flight");
+            var dest = e.options[e.selectedIndex].value;
             var order_info = {
                 name: name,
                 phone: phone,
                 address: address,
                 email: mail,
                 cost: cost,
-                flight: flightDetails
+                flight: flightDetails,
+                dest: dest,
+                date: $("#date").find(":selected").text(),
+                taken: ordered
             };
             API.createOrder(order_info, function (error, data) {
                 if (error) alert(error);
