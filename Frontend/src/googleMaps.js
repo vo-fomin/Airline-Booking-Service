@@ -15,21 +15,17 @@ function initialize() {
     var arrayMarkers=[
         new google.maps.Marker({
         position: arrayPoints[0],
-        //map - це змінна карти створена за допомогою new google.maps.Map(...)
         map: map
         }),
         new google.maps.Marker({
             position: arrayPoints[1],
-            //map - це змінна карти створена за допомогою new google.maps.Map(...)
             map: map
         }),
         new google.maps.Marker({
             position: arrayPoints[2],
-            //map - це змінна карти створена за допомогою new google.maps.Map(...)
             map: map
         })
     ];
-//Карта створена і показана
 }
 
 exports.init=initialize;
