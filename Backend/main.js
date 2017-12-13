@@ -17,6 +17,8 @@ db.once('open', function callback(){
 mongoose.Promise=global.Promise;
 
 var Flight=require('./data/FlightModel');
+var Complaint=require('./data/ComplaintModel');
+var CallOrder=require('./data/CallOrderModel');
 
 function configureEndpoints(app) {
     var pages = require('./pages');
@@ -27,6 +29,8 @@ function configureEndpoints(app) {
     app.post('/api/create-order/', api.createOrder);
     app.post('/api/send-mail/', api.sendMail);
     app.post('/api/send-tickets/', api.addTaken);
+    app.post('/api/send-complaint/', api.createComplaint);
+    app.post('/api/send-call-order/', api.createCallOrder);
 
     app.get('/', pages.mainPage);
 

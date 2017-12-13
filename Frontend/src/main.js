@@ -497,6 +497,13 @@ $(function(){
         else $complaint.css("box-shadow", "0 0 3px #006600");
 
         if(suc) {
+            API.sendComplaint({
+                name: name,
+                mail: mail,
+                phone: phone,
+                address:address,
+                text: complaint
+            });
             API.sendMail({
                     to: mail,
                     subject: 'Скаргу отримано',
@@ -534,6 +541,11 @@ $(function(){
         else $clientMail2.css("box-shadow", "0 0 3px #006600");
 
         if(suc) {
+            API.sendCallOrder({
+                name: name,
+                mail: mail,
+                phone: phone
+            });
             API.sendMail({
                     to: mail,
                     subject: 'Заяву отримано',

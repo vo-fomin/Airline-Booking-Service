@@ -47,3 +47,11 @@ exports.sendTickets=function(data, callback){
 exports.getClientData=function(callback){
     backendGet("/api/get-client-data/", callback);
 };
+
+exports.sendComplaint=function(data, callback){
+    backendPost("/api/send-complaint/", data, callback);
+};
+
+exports.sendCallOrder=function(data, callback){
+    backendPost("/api/send-call-order/", data, callback);
+};
