@@ -23,6 +23,11 @@ body{
     top:10px;
     cursor:pointer;
 }
+
+.row, #header{
+    min-width: 440px;
+}
+
 .header-phones{
     font-size:14px;
     color:lightgray;
@@ -156,6 +161,7 @@ body{
 .complain .contentImage{
     height:90px;
     top:20px;
+
 }
 .complain .text{
     width:55%;
@@ -163,6 +169,10 @@ body{
     padding-bottom: 20px;
     font-size: 12px;
 }
+
+#complain{
+     min-width: 440px;
+ }
 .text{
     padding-left: 15px;
     padding-right: 15px;
@@ -429,6 +439,7 @@ form{
     .primary{
         height:350px;
     }
+    .secondary{
         height:260px;
     }
     .complain{
@@ -543,13 +554,7 @@ form{
         font-size: 14px;
         margin-right:6.5%;
     }
-    .gallery-item img{
-        height:50px;
-    }
-    .gallery-item p{
-        max-width:50px;
-        font-size: 8px;
-    }
+
     .primary .contentImage{
         top:5px;
     }
@@ -572,6 +577,11 @@ form{
         top:35px;
         padding-bottom: 1px;
     }
+
+    textarea{
+        font-size: 4px;
+
+    }
 }
 
 @media (max-width: 900px) {
@@ -579,6 +589,9 @@ form{
         width: 87%;
         margin-left: 7%;
         margin-right: 7%;
+    }
+    textarea{
+        font-size: 8px;
     }
 }
 
@@ -589,6 +602,9 @@ form{
     }
     .description{
         font-size: 20px;
+    }
+    textarea{
+        font-size: 14px;
     }
 
 
@@ -606,6 +622,7 @@ form{
     .header-item{
         font-size: 15px;
         margin-right:4.5%;
+        margin-top: 20px;
     }
 
     .left-panel {
@@ -638,8 +655,10 @@ form{
     }
 }
 
-@media (max-width: 400px) {
-   body{
-        overflow-x: scroll;
+@media (max-width: 440px) {
+   .row{
+        overflow-x: hidden;
+      /* width:auto;*/
     }
+
 }
