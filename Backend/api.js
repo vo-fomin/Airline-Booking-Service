@@ -63,17 +63,6 @@ exports.sendMail=function(req, res){
 
 exports.addTaken=function(req, res){
     var tickets=req.body;
-    /*for(var i=0, j;i<Flights.length;i++){
-        if(Flights[i].dest===tickets.dest){
-            for(j=0;j<Flights[i].dates.length;j++){
-                if(Flights[i].dates[j].date===tickets.date){
-                    Flights[i].dates[j].taken=Flights[i].dates[j].taken.concat(tickets.taken);
-                    break;
-                }
-            }
-            break;
-        }
-    }*/
     var dates=[];
     Flights.find({
         dest:tickets.dest
@@ -109,7 +98,7 @@ exports.createOrder = function(req, res) {
         amount:	order_info.cost,
         currency:	"UAH",
         description:	description,
-        order_id:	Math.random(),
+        order_id:	Math.random()*100000000,
         sandbox:	1
     };
     var data	=	base64(JSON.stringify(order));
@@ -117,7 +106,7 @@ exports.createOrder = function(req, res) {
     clientData={
         email: order_info.email,
         name: order_info.name,
-        code: parseInt(order.order_id*100000000),
+        code: parseInt(order.order_id),
         dest: order_info.dest,
         date: order_info.date,
         taken: order_info.taken
