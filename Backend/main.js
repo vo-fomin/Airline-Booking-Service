@@ -3,6 +3,21 @@ var path = require('path');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
+var mongoose=require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/Flights', {useMongoClient:true});
+var db=mongoose.connection;
+
+db.on('error', function(err){
+    console.log('connection error:', err.message);
+});
+db.once('open', function callback(){
+    console.log('Connected to DB!');
+});
+mongoose.Promise=global.Promise;
+
+var Flight=require('./data/FlightModel');
+
 function configureEndpoints(app) {
     var pages = require('./pages');
     var api = require('./api');
@@ -13,6 +28,7 @@ function configureEndpoints(app) {
     app.get('/api/get-client-data/', api.getClientData);
     app.post('/api/create-order/', api.createOrder);
     app.post('/api/send-mail/', api.sendMail);
+    app.post('/api/send-tickets/', api.addTaken);
 
     //Сторінки
     //Головна сторінка

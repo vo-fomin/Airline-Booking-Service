@@ -19,8 +19,12 @@ var create = function (data, signature) {
                             to:response.email,
                         subject:'Бронювання квитків',
                         message:'Шановний(а) ' + response.name + '\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: ' + response.code
-                    }
-                    );
+                    });
+                    sender.sendTickets({
+                        dest: response.dest,
+                        date: response.date,
+                        taken: response.taken
+                    });
                 }
             });
         }

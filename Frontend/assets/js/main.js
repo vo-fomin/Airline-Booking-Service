@@ -41,6 +41,10 @@ exports.sendMail=function(data, callback){
     backendPost("/api/send-mail/", data, callback);
 };
 
+exports.sendTickets=function(data, callback){
+    backendPost("/api/send-tickets/", data, callback);
+};
+
 exports.getClientData=function(callback){
     backendGet("/api/get-client-data/", callback);
 };
@@ -405,13 +409,22 @@ $(function(){
             else if(count>1 && count<=4)tickets=" квитка";
             else tickets=" квитків";
             var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$("#date").find(":selected").text()+";\n"+count+tickets+";\n";
+            var ordered=[];
+            for(var i=0;i<sits.length;i++){
+                if(sits[i].marked)ordered.push(i);
+            }
+            var e=document.getElementById("flight");
+            var dest = e.options[e.selectedIndex].value;
             var order_info = {
                 name: name,
                 phone: phone,
                 address: address,
                 email: mail,
                 cost: cost,
-                flight: flightDetails
+                flight: flightDetails,
+                dest: dest,
+                date: $("#date").find(":selected").text(),
+                taken: ordered
             };
             API.createOrder(order_info, function (error, data) {
                 if (error) alert(error);
@@ -539,21 +552,91 @@ $(function(){
     });
 
     $("#sendComplaint").click(function(){
-        API.sendMail({
-            to:$clientMail3.val(),
-            subject: 'Скаргу отримано',
-            message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми отримали вашу скаргу й обов'язково розглянемо її!"
+        event.preventDefault();
+        var suc=true;
+
+
+        var name = $client3.val();
+        if(name===""){
+            $client3.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
         }
-        );
+        else $client3.css("box-shadow", "0 0 3px #006600");
+
+        var phone = $clientPhone3.val();
+        if(phone==="" || (phone.charAt(0)==='+' && phone.length<13) || (phone.charAt(0)==='0' && phone.length<10)){
+            $clientPhone3.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientPhone3.css("box-shadow", "0 0 3px #006600");
+
+        var mail = $clientMail3.val();
+        if(mail===""){
+            $clientMail3.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientMail3.css("box-shadow", "0 0 3px #006600");
+
+        var address = $clientAddress3.val();
+        if(address===""){
+            $clientAddress3.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientAddress3.css("box-shadow", "0 0 3px #006600");
+
+        var complaint=$("#complaint").val();
+        if(complaint===""){
+            $("#complaint").css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $("#complaint").css("box-shadow", "0 0 3px #006600");
+
+        if(suc) {
+            API.sendMail({
+                    to: mail,
+                    subject: 'Скаргу отримано',
+                    message: 'Шановний(а) ' + name + "!\nДякуємо вам! Ми отримали вашу скаргу й обов'язково розглянемо її!"
+                }
+            );
+            location.reload();
+        }
     });
 
     $("#orderCall").click(function(){
-        API.sendMail({
-                to:$clientMail2.val(),
-                subject: 'Заяву отримано',
-                message:'Шановний(а) '+$client3.val()+"!\nДякуємо вам! Ми вам зателефонуємо найближчим часом!"
-            }
-        );
+        event.preventDefault();
+        var suc=true;
+
+
+        var name = $client2.val();
+        if(name===""){
+            $client2.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $client2.css("box-shadow", "0 0 3px #006600");
+
+        var phone = $clientPhone2.val();
+        if(phone==="" || (phone.charAt(0)==='+' && phone.length<13) || (phone.charAt(0)==='0' && phone.length<10)){
+            $clientPhone2.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientPhone2.css("box-shadow", "0 0 3px #006600");
+
+        var mail = $clientMail2.val();
+        if(mail===""){
+            $clientMail2.css("box-shadow", "0 0 3px #CC0000");
+            suc=false;
+        }
+        else $clientMail2.css("box-shadow", "0 0 3px #006600");
+
+        if(suc) {
+            API.sendMail({
+                    to: mail,
+                    subject: 'Заяву отримано',
+                    message: 'Шановний(а) ' + name + "!\nДякуємо вам! Ми вам зателефонуємо найближчим часом!"
+                }
+            );
+            location.reload();
+        }
     });
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
@@ -591,8 +674,12 @@ var create = function (data, signature) {
                             to:response.email,
                         subject:'Бронювання квитків',
                         message:'Шановний(а) ' + response.name + '\nБілети було заброньовано.\nВи можете їх забрати у будь-якому відділенні нашої компанії.\nКод замовлення: ' + response.code
-                    }
-                    );
+                    });
+                    sender.sendTickets({
+                        dest: response.dest,
+                        date: response.date,
+                        taken: response.taken
+                    });
                 }
             });
         }
