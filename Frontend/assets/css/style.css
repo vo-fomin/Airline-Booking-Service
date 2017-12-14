@@ -43,6 +43,7 @@ body{
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    border-radius:6px;
 }
 .header-item:hover{
     transition: background-color 0.3s;
