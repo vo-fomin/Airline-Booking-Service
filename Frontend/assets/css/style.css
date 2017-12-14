@@ -173,6 +173,7 @@ body{
 #complain{
      min-width: 440px;
  }
+
 .text{
     padding-left: 15px;
     padding-right: 15px;
@@ -206,10 +207,15 @@ body{
     bottom: 0;
     height: 30px;
     right: 0;
-    left: 31%;
+    left: 250px;
     color: darkgray;
     text-align: center;
     padding-bottom: 20px;
+}
+
+#complaint{
+    font-weight:200;
+    font-size:17px;
 }
 
 #background{
@@ -290,13 +296,14 @@ form{
     transition: all 0s;
 }
 
+
 @media(max-height: 850px){
     input, label, .widget p, .finished, .sum{
         font-size:12px;
     }
 
-    textarea{
-        font-size:14px;
+    #complaint{
+        font-size:13px;
     }
 
     .finished{
@@ -312,9 +319,9 @@ form{
     form{
         margin-top:-2%;
     }
-    textarea{
-        font-size:13px;
-    }
+    #complaint{
+         font-size:12px;
+     }
 
     .finished{
         width:60px;
@@ -335,8 +342,8 @@ form{
     form{
         margin-top:-2.8%;
     }
-    textarea{
-        font-size:12px;
+    #complaint{
+        font-size:11px;
     }
     .finished{
         width:40px;
@@ -359,7 +366,7 @@ form{
     .sum h3{
         font-size:14px;
     }
-    textarea{
+    #complaint{
         font-size:8px;
     }
     .left-panel{
@@ -435,7 +442,9 @@ form{
         max-width:100px;
         font-size:11px;
     }
-
+    #complaint{
+        font-size:15px;
+    }
     .primary{
         height:350px;
     }
@@ -482,6 +491,11 @@ form{
         font-size: 10px;
     }
 }
+@media (max-width: 1420px){
+    #complaint{
+        font-size:13px;
+    }
+}
 @media (max-width: 1225px) {
     .header-item{
         font-size: 16px;
@@ -494,8 +508,9 @@ form{
         max-width:75px;
         font-size:9px;
     }
-
-
+    #complaint{
+        font-size:12px;
+    }
     .primary{
         height:300px;
     }
@@ -548,7 +563,11 @@ form{
         font-size: 30px;
     }
 }
-
+@media(max-width: 1050px){
+    #complaint{
+        font-size:9px;
+    }
+}
 @media (max-width: 1000px) {
     .header-item{
         font-size: 14px;
@@ -577,11 +596,6 @@ form{
         top:35px;
         padding-bottom: 1px;
     }
-
-    textarea{
-        font-size: 4px;
-
-    }
 }
 
 @media (max-width: 900px) {
@@ -589,9 +603,6 @@ form{
         width: 87%;
         margin-left: 7%;
         margin-right: 7%;
-    }
-    textarea{
-        font-size: 8px;
     }
 }
 
@@ -603,11 +614,9 @@ form{
     .description{
         font-size: 20px;
     }
-    textarea{
-        font-size: 14px;
+    #complaint{
+        font-size:6px;
     }
-
-
     #content {
         margin-left: 2%;
         margin-right: 2%;
@@ -658,7 +667,6 @@ form{
 @media (max-width: 440px) {
    .row{
         overflow-x: hidden;
-      /* width:auto;*/
     }
 
 }
