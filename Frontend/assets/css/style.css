@@ -37,8 +37,7 @@ body{
     margin-right:13.5%;
     color:lightgray;
     font-size:18px;
-    background-color: Transparent;
-    background-repeat:no-repeat;
+    background: Transparent no-repeat;
     border: none;
     cursor:pointer;
     overflow: hidden;
@@ -253,7 +252,7 @@ body{
     bottom: 10%;
     color: white;
     font-size: 40px;
-    font-family: "Monotype Corsiva";
+    font-family: "Monotype Corsiva", serif;
 }
 .enabled{
     opacity: 1;
@@ -639,16 +638,16 @@ form{
         display: none;
     }
     .right-column{
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
     }
     #footer{
-        left:0px;
+        left:0;
 
     }
 
     #content {
-        margin-left: 0px;
+        margin-left: 0;
     }
 
 
