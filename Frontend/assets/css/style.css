@@ -1,7 +1,7 @@
 body{
     background:lightgray;
     position:relative;
-    /*padding-left:250px;
+   /* padding-left:250px;
     padding-bottom:40px;*/
     overflow-x: hidden;
 }
@@ -74,14 +74,14 @@ body{
     top: 90px;
     position: fixed;
     z-index: 2000;
-    width: 30%;
+    width: 250px;
     height: 100%;
     background: white;
     overflow-x: hidden;
     margin-right: 2%;
 }
 .right-column {
-    padding-left: 31%;
+    padding-left: 250px;
     padding-right: 0;
 }
 .menu-level{
