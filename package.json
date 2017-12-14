@@ -18,6 +18,9 @@
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.1",
     "grunt-contrib-watch": "^0.6.1",
-    "morgan": "^1.9.0"
+    "mongodb": "^3.0.0-rc0",
+    "mongoose": "^4.13.7",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.4.1"
   }
 }

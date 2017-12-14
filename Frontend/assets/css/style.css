@@ -1,14 +1,14 @@
 body{
     background:lightgray;
     position:relative;
-    padding-left:300px;
-    padding-bottom:160px;
+    /*padding-left:250px;
+    padding-bottom:40px;*/
+    overflow-x: hidden;
 }
 #header{
     width:100%;
     height:90px;
     z-index:2500;
-    padding-top:20px;
     padding-left:120px;
     position:fixed;
     top:0;
@@ -23,6 +23,11 @@ body{
     top:10px;
     cursor:pointer;
 }
+
+.row, #header{
+    min-width: 440px;
+}
+
 .header-phones{
     font-size:14px;
     color:lightgray;
@@ -43,65 +48,41 @@ body{
     transition: background-color 0.3s;
     background-color:rgba(200, 200, 200, 0.2);
 }
-.gallery-item{
-    margin-top: 20px;
-    margin-left:17%;
-    display: inline-block;
-    float:left;
-}
-.gallery-item img{
-    height:125px;
-}
-.gallery-item p{
-    display:inline-block;
-    max-width:125px;
-    margin-top: 5px;
-    font-size:12px;
-    text-align: center;
-}
+
 #slider{
     margin-top: 90px;
-    padding-top:10px;
-    padding-bottom:20px;
-    background: darkgray;
-    border-bottom: solid black 1px;
+    padding-top: 2px;
 }
-#gallery{
-    margin-top:10px;
-    height:230px;
-    border-top:solid black 1px;
-    border-bottom: solid black 1px;
-}
+
+
 .close{
     position:absolute;
     top:20px;
     right:20px;
 }
 .container{
-    width:95%;
+    width:100%;
+    padding: 0;
 }
 .item{
     position:relative;
     background: gray;
 }
-.description{
-    position:absolute;
-    font-weight: 500;
-    right:8%;
-    top:1%;
-    width:30%;
-}
 .left-panel{
     padding-top: 10px;
-    left:0;
-    top:90px;
-    position:fixed;
-    z-index:2000;
-    width:300px;
-    height:100%;
-    background:white;
-    overflow-y:scroll;
-    overflow-x:hidden;
+    left: 0;
+    top: 90px;
+    position: fixed;
+    z-index: 2000;
+    width: 30%;
+    height: 100%;
+    background: white;
+    overflow-x: hidden;
+    margin-right: 2%;
+}
+.right-column {
+    padding-left: 31%;
+    padding-right: 0;
 }
 .menu-level{
     margin-left: 10px;
@@ -135,11 +116,12 @@ body{
 
 }
 #content{
-    width:70%;
-    margin-top:10px;
+    width: 70%;
+    margin-top: 1%;
     margin-left: 15%;
-    background:white;
-    border:solid 1px darkgray;
+    background: white;
+    border: solid 1px darkgray;
+    margin-bottom: 40px;
 }
 
 .option{
@@ -179,6 +161,7 @@ body{
 .complain .contentImage{
     height:90px;
     top:20px;
+
 }
 .complain .text{
     width:55%;
@@ -186,6 +169,10 @@ body{
     padding-bottom: 20px;
     font-size: 12px;
 }
+
+#complain{
+     min-width: 440px;
+ }
 .text{
     padding-left: 15px;
     padding-right: 15px;
@@ -214,18 +201,15 @@ body{
     width:127px;
 }
 
-#footer{
-    position:absolute;
-    bottom:0;
-    height:150px;
-    background:whitesmoke;
-    width:100%;
-    border-top:solid black 1px;
-    padding-left:300px;
-    left:0;
-    color:darkgray;
+#footer {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    right: 0;
+    left: 31%;
+    color: darkgray;
     text-align: center;
-    padding-top:90px;
+    padding-bottom: 20px;
 }
 
 #background{
@@ -235,12 +219,12 @@ body{
     left:0;
     width:100%;
     height:100%;
-    z-index: 7000;
+    z-index: 2800;
     background: rgba(0, 0, 0, 0.8);
 }
 .widget{
     background:white;
-    z-index:9000;
+    z-index:2900;
     padding: 50px 20px 20px;
     border-radius:6px;
     display: none;
@@ -255,6 +239,15 @@ body{
     opacity:0;
     transition: opacity 0.3s ease-in;
 }
+.description {
+    position: absolute;
+    font-weight: 500;
+    left: 8%;
+    bottom: 10%;
+    color: white;
+    font-size: 40px;
+    font-family: "Monotype Corsiva";
+}
 .enabled{
     opacity: 1;
 }
@@ -265,11 +258,20 @@ body{
 .widget form label{
     display:block;
 }
+form{
+    margin-top:-1.5%;
+}
 .widget form input, select{
     font-weight:300;
     display:flex;
     flex-direction:row;
     margin-left:10px;
+}
+.sum{
+    position:absolute;
+    bottom:10.2%;
+    right:10%;
+    width:10%;
 }
 .finished{
     position:absolute;
@@ -284,8 +286,142 @@ body{
     margin-top: 5%;
     margin-left: 5%;
     margin-bottom:2.5%;
-    height: 350px;
+    height: 50%;
     transition: all 0s;
+}
+
+@media(max-height: 850px){
+    input, label, .widget p, .finished, .sum{
+        font-size:12px;
+    }
+
+    textarea{
+        font-size:14px;
+    }
+
+    .finished{
+        width:80px;
+    }
+}
+
+@media(max-height: 750px){
+    input, label, .widget p, .finished, .sum{
+        font-size:10px;
+    }
+
+    form{
+        margin-top:-2%;
+    }
+    textarea{
+        font-size:13px;
+    }
+
+    .finished{
+        width:60px;
+    }
+
+    .left-panel{
+        font-size:12px;
+    }
+    .sum h3{
+        font-size:20px;
+    }
+}
+
+@media(max-height: 650px){
+    input, label, .widget p, .finished, .sum{
+        font-size:8px;
+    }
+    form{
+        margin-top:-2.8%;
+    }
+    textarea{
+        font-size:12px;
+    }
+    .finished{
+        width:40px;
+    }
+    .left-panel{
+        font-size:11px;
+    }
+    .sum h3{
+        font-size:16px;
+    }
+}
+
+@media(max-height: 550px){
+    input, label, .widget p, .finished, .sum{
+        font-size:6px;
+    }
+    form{
+        margin-top:-3%;
+    }
+    .sum h3{
+        font-size:14px;
+    }
+    textarea{
+        font-size:8px;
+    }
+    .left-panel{
+        font-size:10px;
+    }
+}
+
+@media(max-height: 450px){
+    input, label, .widget p, .finished, .sum{
+        font-size:4px;
+    }
+    .finished{
+        width:10px;
+    }
+}
+
+@media (max-width: 1680px) {
+    .primary{
+        height:350px;
+    }
+    .secondary{
+        height:260px;
+    }
+    .complain{
+        height:200px;
+    }
+    .primary .contentImage{
+        height:110px;
+    }
+    .primary .text{
+        top:150px;
+        font-size: 13px;
+    }
+    .secondary .contentImage{
+        height:70px;
+        top:30px;
+    }
+    .secondary .text{
+        top:120px;
+        font-size: 12px;
+    }
+    .complain .contentImage{
+        height:40px;
+        top:20px;
+    }
+    .complain .text{
+        top:60px;
+        font-size: 10px;
+    }
+
+    #oBook{
+        width:180px;
+        font-size: 15px;
+    }
+    #oPhone{
+        width:130px;
+        font-size: 12px;
+    }
+    #oComplain{
+        width:110px;
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 1625px) {
@@ -409,21 +545,16 @@ body{
     }
 
     .description{
-        font-size: 12px;
+        font-size: 30px;
     }
 }
+
 @media (max-width: 1000px) {
     .header-item{
         font-size: 14px;
         margin-right:6.5%;
     }
-    .gallery-item img{
-        height:50px;
-    }
-    .gallery-item p{
-        max-width:50px;
-        font-size: 8px;
-    }
+
     .primary .contentImage{
         top:5px;
     }
@@ -446,13 +577,88 @@ body{
         top:35px;
         padding-bottom: 1px;
     }
+
+    textarea{
+        font-size: 4px;
+
+    }
 }
+
+@media (max-width: 900px) {
+    #content {
+        width: 87%;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+    textarea{
+        font-size: 8px;
+    }
+}
+
 @media (max-width: 815px) {
     .header-item{
         font-size: 12px;
         margin-right:3.5%;
     }
     .description{
+        font-size: 20px;
+    }
+    textarea{
+        font-size: 14px;
+    }
+
+
+    #content {
+        margin-left: 2%;
+        margin-right: 2%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 650px) {
+    .header-phones{
+        display: none;
+    }
+    .header-item{
+        font-size: 15px;
+        margin-right:4.5%;
+        margin-top: 20px;
+    }
+
+    .left-panel {
+        display: none;
+    }
+    .right-column{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #footer{
+        left:0px;
+
+    }
+
+    #content {
+        margin-left: 0px;
+    }
+
+
+}
+
+@media (max-width: 600px) {
+    .header-item{
+        font-size: 12px;
+        margin-right:2.5%;
+    }
+
+    .description{
         font-size: 10px;
     }
+}
+
+@media (max-width: 440px) {
+   .row{
+        overflow-x: hidden;
+      /* width:auto;*/
+    }
+
 }

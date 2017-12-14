@@ -13,7 +13,7 @@ function backendGet(url, callback) {
     })
 }
 
-/*function backendPost(url, data, callback) {
+function backendPost(url, data, callback) {
     $.ajax({
         url: API_URL + url,
         type: 'POST',
@@ -26,12 +26,32 @@ function backendGet(url, callback) {
             callback(new Error("Ajax Failed"));
         }
     })
-}*/
+}
 
 exports.getFlights = function(callback) {
     backendGet("/api/get-flights/", callback);
 };
 
-/*exports.createOrder = function(order_info, callback) {
+exports.createOrder = function(order_info, callback) {
     backendPost("/api/create-order/", order_info, callback);
-};*/
+};
+
+exports.sendMail=function(data, callback){
+    backendPost("/api/send-mail/", data, callback);
+};
+
+exports.sendTickets=function(data, callback){
+    backendPost("/api/send-tickets/", data, callback);
+};
+
+exports.getClientData=function(callback){
+    backendGet("/api/get-client-data/", callback);
+};
+
+exports.sendComplaint=function(data, callback){
+    backendPost("/api/send-complaint/", data, callback);
+};
+
+exports.sendCallOrder=function(data, callback){
+    backendPost("/api/send-call-order/", data, callback);
+};
