@@ -7,6 +7,8 @@ var email=require('./email');
 
 var mongoose=require('mongoose');
 var Flights=mongoose.model("Flight");
+var Complaints=mongoose.model("Complaint");
+var CallOrders=mongoose.model("Call");
 
 function base64(str)	 {
     return new Buffer(str).toString('base64');
@@ -33,7 +35,7 @@ exports.getFlights = function(req, res) {
                     dates: defaultFlights[i].dates
                 }).save(function(err, flights_db){
                     if(!err){
-                        console.log(flights_db.id);
+                        console.log(flights_db._id);
                     }
                 })
             }
@@ -116,4 +118,32 @@ exports.createOrder = function(req, res) {
         data:data,
         signature:signature
     });
+};
+
+exports.createComplaint = function(req, res){
+    var complaint=req.body;
+    new Complaints({
+        name:complaint.name,
+        mail:complaint.mail,
+        phone:complaint.phone,
+        address:complaint.address,
+        complaint:complaint.text
+    }).save(function(err, complaints_db){
+        if(!err){
+            console.log(complaints_db._id);
+        }
+    })
+};
+
+exports.createCallOrder = function(req, res){
+    var callOrder=req.body;
+    new CallOrders({
+        name:callOrder.name,
+        mail:callOrder.mail,
+        phone:callOrder.phone
+    }).save(function(err, callOrders_db){
+        if(!err){
+            console.log(callOrders_db._id);
+        }
+    })
 };

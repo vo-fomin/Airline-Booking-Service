@@ -30,9 +30,7 @@ var create = function (data, signature) {
         }
         suc=data.result==="success";
     }).on("liqpay.ready", function (data) {
-//	ready
     }).on("liqpay.close", function (data) {
-//	close
         if(suc) {
             window.location.href = '/';
         }

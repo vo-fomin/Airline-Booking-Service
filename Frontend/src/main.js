@@ -1,10 +1,13 @@
 $(function(){
     var $logo = $("#logo");
+
     var canvas = document.getElementById('plane');
     var context;
+    var plane = document.getElementById('scheme');
+    var sits = new Array(40);
+
     var GoogleMap=require('./googleMaps');
 
-    var sits = new Array(40);
     var flights = null;
     var dates=null;
     var count=0;
@@ -19,14 +22,31 @@ $(function(){
     var date = document.getElementById("date");
     var $price=$("#price");
     var currentPrice=0;
+    var $nameInput=$(".nameInput"), $phoneInput=$(".phoneInput"), $mailInput=$(".mailInput"), $addressInput=$(".addressInput");
+    var $complaint=$("#complaint");
+    var $date=$("#date");
+    var $service=$("#service"), $complain=$("#complain"), $phone=$("#phone"), $details=$("#details"), $contact=$("#contact");
+    var $background=$("#background"), $widget=$(".widget");
 
+    var $client=$("#client");
+    var $clientPhone=$("#tel");
+    var $clientMail=$("#mail");
+    var $clientAddress=$("#address");
 
+    var $client2=$("#client2");
+    var $clientMail2=$("#mail2");
+    var $clientPhone2=$("#tel2");
+
+    var $client3=$("#client3");
+    var $clientPhone3=$("#tel3");
+    var $clientMail3=$("#mail3");
+    var $clientAddress3=$("#address3");
 
     function fillDates(dest) {
         for (var i = 0; i < flights.length; i++) {
             if (flights[i].dest === dest) {
                 dates=flights[i].dates;
-                $("#date").empty();
+                $date.empty();
                 for(var j=0;j<dates.length;j++){
                     date.add(new Option(dates[j].date, dates[j].date, j === 0, j === 0));
                 }
@@ -52,19 +72,15 @@ $(function(){
         return false;
     }
 
-
-
     $flight.change(function () {
         count=0;
         changeFlight();
     });
 
-    $("#date").change(function(){
+    $date.change(function(){
         count=0;
         changeDate();
     });
-
-    var plane = document.getElementById('scheme');
 
     $logo.mouseover(function () {
         $logo.prop("src", "images/Logo.gif");
@@ -80,20 +96,20 @@ $(function(){
     });
 
     $(".close").click(function () {
-        $(".widget").removeClass("enabled");
+        $widget.removeClass("enabled");
         count=0;
-        $(".nameInput").val("");
-        $(".nameInput").css("box-shadow", "none");
-        $(".phoneInput").val("");
-        $(".phoneInput").css("box-shadow", "none");
-        $(".mailInput").val("");
-        $(".mailInput").css("box-shadow", "none");
-        $(".addressInput").val("");
-        $(".addressInput").css("box-shadow", "none");
+        $nameInput.val("");
+        $nameInput.css("box-shadow", "none");
+        $phoneInput.val("");
+        $phoneInput.css("box-shadow", "none");
+        $mailInput.val("");
+        $mailInput.css("box-shadow", "none");
+        $addressInput.val("");
+        $addressInput.css("box-shadow", "none");
         $price.css("box-shadow", "none");
         window.setTimeout(function(){
-            $(".widget").hide();
-            $("#background").hide();
+            $widget.hide();
+            $background.hide();
         }, 300);
     });
 
@@ -211,70 +227,46 @@ $(function(){
         }
     }
 
-    function redraw() {
-        if(context) {
-            context.drawImage(plane, -600, 0, 2650, 1200);
-            for (var i = 0; i < sits.length; i++) {
-                if (sits[i].marked) context.fillStyle = 'gray';
-                if (sits[i].taken) context.fillStyle = 'black';
-                context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).stroke();
-                if (sits[i].taken || sits[i].marked) context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).fill();
-            }
-        }
-    }
-
     $("#oPhone").click(function () {
-        $("#phone").show();
+        $phone.show();
         window.setTimeout(function(){
-            $("#phone").addClass('enabled');
+            $phone.addClass('enabled');
         }, 1);
-        $("#background").show();
+        $background.show();
     });
 
     $("#oComplain").click(function () {
-        $("#complain").show();
+        $complain.show();
         window.setTimeout(function(){
-            $("#complain").addClass('enabled');
+            $complain.addClass('enabled');
             }, 1);
-        $("#background").show();
+        $background.show();
     });
 
     $("#infoPage").click(function () {
-        $("#details").show();
+        $details.show();
         window.setTimeout(function(){
-            $("#details").addClass('enabled');
+            $details.addClass('enabled');
         }, 1);
-        $("#background").show();
+        $background.show();
     });
     $("#contactPage").click(function () {
-        $("#contact").show();
+        $contact.show();
         window.setTimeout(function(){
-            $("#contact").addClass('enabled');
+            $contact.addClass('enabled');
         }, 1);
-        $("#background").show();
+        $background.show();
         GoogleMap.init();
     });
     $("#servicePage").click(function () {
-        $("#service").show();
+        $service.show();
         window.setTimeout(function(){
-            $("#service").addClass('enabled');
+            $service.addClass('enabled');
         }, 1);
-        $("#background").show();
+        $background.show();
     });
 
-    var $client=$("#client");
-    var $clientPhone=$("#tel");
-    var $clientMail=$("#mail");
-    var $clientAddress=$("#address");
 
-    var $client2=$("#client2");
-    var $clientMail2=$("#mail2");
-    var $clientPhone2=$("#tel2");
-
-    var $client3=$("#client3");
-    var $clientPhone3=$("#tel3");
-    var $clientMail3=$("#mail3");
-    var $clientAddress3=$("#address3");
 
     $("#order").click(function(){
         event.preventDefault();
@@ -321,7 +313,7 @@ $(function(){
             if(count===1)tickets=" квиток";
             else if(count>1 && count<=4)tickets=" квитка";
             else tickets=" квитків";
-            var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$("#date").find(":selected").text()+";\n"+count+tickets+";\n";
+            var flightDetails="Рейс – "+$flight.find(":selected").text()+";\nДата – "+$date.find(":selected").text()+";\n"+count+tickets+";\n";
             var ordered=[];
             for(var i=0;i<sits.length;i++){
                 if(sits[i].marked)ordered.push(i);
@@ -336,7 +328,7 @@ $(function(){
                 cost: cost,
                 flight: flightDetails,
                 dest: dest,
-                date: $("#date").find(":selected").text(),
+                date: $date.find(":selected").text(),
                 taken: ordered
             };
             API.createOrder(order_info, function (error, data) {
@@ -349,7 +341,7 @@ $(function(){
         }
     });
 
-    $(".nameInput").bind("keypress", function(event){
+    $nameInput.bind("keypress", function(event){
         var regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'/ -]+$");
         var key=String.fromCharCode(!event.charCode ? event.which : event.charCode);
         if(!regex.test(key)){
@@ -358,7 +350,7 @@ $(function(){
         }
     });
 
-    $(".nameInput").bind("keydown", function(event){
+    $nameInput.bind("keydown", function(event){
         window.setTimeout(function() {
             var $name;
             if(!$client.is(':hidden'))$name=$client;
@@ -371,7 +363,7 @@ $(function(){
         }, 0);
     });
 
-    $(".phoneInput").bind("keypress", function(event){
+    $phoneInput.bind("keypress", function(event){
         var regex;
         var key;
         var text=$(this).val();
@@ -404,7 +396,7 @@ $(function(){
         }
     });
 
-    $(".phoneInput").bind("keydown", function(event){
+    $phoneInput.bind("keydown", function(event){
         window.setTimeout(function() {
             var $phone;
             if(!$clientPhone.is(':hidden'))$phone=$clientPhone;
@@ -417,7 +409,7 @@ $(function(){
         });
     });
 
-    $(".mailInput").bind("keypress", function(event){
+    $mailInput.bind("keypress", function(event){
         var regex;
         var key;
         regex = new RegExp("^[0-9A-Za-z@.]+$");
@@ -428,7 +420,7 @@ $(function(){
         }
     });
 
-    $(".mailInput").bind("keydown", function(event){
+    $mailInput.bind("keydown", function(event){
         window.setTimeout(function() {
             var $mail;
             if(!$clientMail.is(':hidden'))$mail=$clientMail;
@@ -441,7 +433,7 @@ $(function(){
         });
     });
 
-    $(".addressInput").bind("keypress", function(event){
+    $addressInput.bind("keypress", function(event){
         var regex;
         var key;
         regex= new RegExp("^[0-9A-Za-zА-Яа-яІіЇїЄєҐґ'.,/ -]+$");
@@ -452,7 +444,7 @@ $(function(){
         }
     });
 
-    $(".addressInput").bind("keydown", function(event){
+    $addressInput.bind("keydown", function(event){
         window.setTimeout(function() {
             var $address;
             if(!$clientAddress.is(':hidden'))$address=$clientAddress;
@@ -497,14 +489,21 @@ $(function(){
         }
         else $clientAddress3.css("box-shadow", "0 0 3px #006600");
 
-        var complaint=$("#complaint").val();
+        var complaint=$complaint.val();
         if(complaint===""){
-            $("#complaint").css("box-shadow", "0 0 3px #CC0000");
+            $complaint.css("box-shadow", "0 0 3px #CC0000");
             suc=false;
         }
-        else $("#complaint").css("box-shadow", "0 0 3px #006600");
+        else $complaint.css("box-shadow", "0 0 3px #006600");
 
         if(suc) {
+            API.sendComplaint({
+                name: name,
+                mail: mail,
+                phone: phone,
+                address:address,
+                text: complaint
+            });
             API.sendMail({
                     to: mail,
                     subject: 'Скаргу отримано',
@@ -542,6 +541,11 @@ $(function(){
         else $clientMail2.css("box-shadow", "0 0 3px #006600");
 
         if(suc) {
+            API.sendCallOrder({
+                name: name,
+                mail: mail,
+                phone: phone
+            });
             API.sendMail({
                     to: mail,
                     subject: 'Заяву отримано',
@@ -551,6 +555,18 @@ $(function(){
             location.reload();
         }
     });
+
+    function redraw() {
+        if(context) {
+            context.drawImage(plane, -600, 0, 2650, 1200);
+            for (var i = 0; i < sits.length; i++) {
+                if (sits[i].marked) context.fillStyle = 'gray';
+                if (sits[i].taken) context.fillStyle = 'black';
+                context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).stroke();
+                if (sits[i].taken || sits[i].marked) context.roundRect(sits[i].x, sits[i].y, sits[i].w, sits[i].h, sits[i].br).fill();
+            }
+        }
+    }
 
     CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
         if (w < 2 * r) r = w / 2;
