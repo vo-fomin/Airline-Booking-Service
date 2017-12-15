@@ -196,6 +196,7 @@ margin-right: 40px;
 
 .text{
     background: rgba(255, 255, 255, 0.7);
+    border-radius:6px;
     padding-left: 15px;
     padding-right: 15px;
     position:absolute;
@@ -281,12 +282,7 @@ margin-right: 40px;
     left: 8%;
     bottom: 20%;
     color: white;
-
     font-size: 60px;
-    font-family: "Monotype Corsiva";
-
-
-    font-size: 40px;
     font-family: "Monotype Corsiva", serif;
 }
 .enabled{
@@ -463,10 +459,6 @@ form{
         width:170px;
         font-size: 14px;
         margin-top: 5%;
-    }
-
-    .description{
-        font-size: 18px;
     }
 }
 
