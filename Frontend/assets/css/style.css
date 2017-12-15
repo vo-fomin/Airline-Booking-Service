@@ -24,6 +24,10 @@ body{
     cursor:pointer;
 }
 
+#sendComplain{
+    margin: 5px;
+}
+
 .row, #header{
     min-width: 440px;
 }
@@ -227,11 +231,11 @@ margin-right: 40px;
     bottom: 0;
     height: 30px;
     right: 0;
-<<<<<<< HEAD
+
     left: 0;
-=======
+
     left: 250px;
->>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
+
     color: darkgray;
     text-align: center;
     padding-bottom: 20px;
@@ -277,15 +281,13 @@ margin-right: 40px;
     left: 8%;
     bottom: 20%;
     color: white;
-<<<<<<< HEAD
+
     font-size: 60px;
     font-family: "Monotype Corsiva";
 
 
-=======
     font-size: 40px;
     font-family: "Monotype Corsiva", serif;
->>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
 }
 .enabled{
     opacity: 1;
@@ -507,6 +509,10 @@ form{
         font-size: 16px;
     }
 
+    textarea{
+        font-size: 7px;
+    }
+
     #oBook{
         width:280px;
         font-size: 16px;
@@ -527,6 +533,10 @@ form{
 @media (max-width: 1420px){
     #complaint{
         font-size:13px;
+    }
+
+    textarea{
+        font-size: 7px;
     }
 }
 @media (max-width: 1225px) {
@@ -631,17 +641,14 @@ form{
         top:10%;
         font-size: 12px;
     }
-<<<<<<< HEAD
 
     textarea{
-        font-size: 4px;
+        font-size: 8px;
 
     }
     .description{
         font-size: 20px;
     }
-=======
->>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
 }
 
 @media (max-width: 900px) {
@@ -650,9 +657,8 @@ form{
         margin-left: 7%;
         margin-right: 7%;
     }
-<<<<<<< HEAD
     textarea{
-        font-size: 8px;
+        font-size: 7px;
     }
     .description{
         font-size: 16px;
@@ -671,8 +677,6 @@ form{
         top:10%;
         font-size: 12px;
     }
-=======
->>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
 }
 
 @media (max-width: 815px) {
@@ -686,7 +690,6 @@ form{
     #complaint{
         font-size:6px;
     }
-<<<<<<< HEAD
     .primary .text{
         top:10%;
         font-size: 12px;
@@ -701,9 +704,6 @@ form{
         top:10%;
         font-size: 10px;
     }
-
-=======
->>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
     #content {
         margin-left: 2%;
         margin-right: 2%;
@@ -728,14 +728,11 @@ form{
         display: none;
     }
     .right-column{
-<<<<<<< HEAD
         padding-left: 0px;
         padding-right: 0px;
 
-=======
         padding-left: 0;
         padding-right: 0;
->>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
     }
     #footer{
         left:0;
@@ -793,6 +790,9 @@ form{
     .complain .text{
         top:5%;
         font-size: 12px;
+    }
+    textarea{
+        font-size: 9px;
     }
 }
 
