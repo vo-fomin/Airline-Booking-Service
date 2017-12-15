@@ -1,5 +1,5 @@
 body{
-    background:lightgray;
+    background:#e7f2f3;
     position:relative;
    /* padding-left:250px;
     padding-bottom:40px;*/
@@ -14,7 +14,7 @@ body{
     top:0;
     left:0;
     background:rgba(0, 0, 0, 0.8);
-    color:lightgray;
+    color: #e7f2f3;
 }
 #logo{
     position:absolute;
@@ -30,12 +30,12 @@ body{
 
 .header-phones{
     font-size:14px;
-    color:lightgray;
+    color: #e7f2f3;
     margin-right: 13.5%;
 }
 .header-item{
     margin-right:13.5%;
-    color:lightgray;
+    color:#e7f2f3;
     font-size:18px;
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -76,8 +76,9 @@ body{
     z-index: 2000;
     width: 250px;
     height: 100%;
-    background: white;
+    background: #e7f2f3;
     overflow-x: hidden;
+    padding-right: 2%;
     margin-right: 2%;
 }
 .right-column {
@@ -115,65 +116,81 @@ body{
     border:solid 1px darkgray;
 
 }
-#content{
+/*#content{
     width: 70%;
     margin-top: 1%;
     margin-left: 15%;
     background: white;
     border: solid 1px darkgray;
     margin-bottom: 40px;
-}
+}*/
 
 .option{
     width:100%;
     position:relative;
-    border-bottom: solid 1px black;
+
 }
 .primary{
     height:400px;
+    background-image: url(../images/tr11.png);
+    width:90%;
+    margin: 40px;
+    border-radius: 15px;
 }
+
+.bblock{
+margin-right: 40px;
+}
+
 .secondary{
-    height:310px;
+    height:250px;
+    background-image: url(../images/tr2.png);
+    width:90%;
+    margin: 40px;
+    margin-top: 20px;
+    border-radius: 15px;
 }
 .complain{
     height:250px;
+    background-image: url(../images/tr4.png);
+    width:90%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-right: 70px;
+    margin-left: 10px;
+    border-radius: 15px;
 }
 .primary .contentImage{
     height:160px;
     top:30px;
 }
-.primary .text{
-    width:75%;
-    top:200px;
-    padding-bottom: 25px;
-    font-size: 15px;
-}
-.secondary .contentImage{
-    height:120px;
-    top:30px;
-}
-.secondary .text{
-    width:65%;
-    top:170px;
-    padding-bottom: 30px;
-    font-size: 14px;
-}
-.complain .contentImage{
-    height:90px;
-    top:20px;
 
+.primary .text{
+    width:65%;
+    top:20%;
+    padding-bottom: 5px;
+    font-size: 20px;
 }
+
+.secondary .text{
+    width:85%;
+    top:20%;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
 .complain .text{
-    width:55%;
-    top:110px;
-    padding-bottom: 20px;
-    font-size: 12px;
+    width:85%;
+    top:20%;
+    padding-bottom: 5px;
+    font-size: 22px;
 }
 
 #complain{
      min-width: 440px;
  }
 .text{
+    background: rgba(255, 255, 255, 0.7);
     padding-left: 15px;
     padding-right: 15px;
     position:absolute;
@@ -181,7 +198,10 @@ body{
     left:0;
     right:0;
     margin:auto;
-    border-bottom: dashed 1px gray;
+    margin-bottom: 5%;
+    padding-bottom: 30px;
+
+  /* border-bottom: dashed 1px gray;*/
 }
 #oBook, #oPhone, #oComplain{
     position:absolute;
@@ -192,13 +212,13 @@ body{
     width:auto;
 }
 #oBook{
-    width:211px;
+    width:300px;
 }
 #oPhone{
-    width:144px;
+    width:180px;
 }
 #oComplain{
-    width:127px;
+    width:180px;
 }
 
 #footer {
@@ -206,10 +226,11 @@ body{
     bottom: 0;
     height: 30px;
     right: 0;
-    left: 31%;
+    left: 0;
     color: darkgray;
     text-align: center;
     padding-bottom: 20px;
+    z-index: 10000;
 }
 
 #background{
@@ -238,15 +259,18 @@ body{
     margin:auto;
     opacity:0;
     transition: opacity 0.3s ease-in;
+    min-width: 440px;
 }
 .description {
     position: absolute;
     font-weight: 500;
     left: 8%;
-    bottom: 10%;
+    bottom: 20%;
     color: white;
-    font-size: 40px;
+    font-size: 60px;
     font-family: "Monotype Corsiva";
+
+
 }
 .enabled{
     opacity: 1;
@@ -381,46 +405,50 @@ form{
         height:350px;
     }
     .secondary{
-        height:260px;
+        height:250px;
     }
     .complain{
-        height:200px;
+        height:250px;
     }
     .primary .contentImage{
         height:110px;
     }
     .primary .text{
-        top:150px;
-        font-size: 13px;
+        top:20%;
+        font-size: 18px;
     }
     .secondary .contentImage{
         height:70px;
         top:30px;
     }
     .secondary .text{
-        top:120px;
-        font-size: 12px;
+        top:15%;
+        font-size: 16px;
     }
-    .complain .contentImage{
-        height:40px;
-        top:20px;
-    }
+
     .complain .text{
-        top:60px;
-        font-size: 10px;
+        top:15%;
+        font-size: 16px;
     }
 
     #oBook{
-        width:180px;
-        font-size: 15px;
+        width:280px;
+        font-size: 16px;
+        margin-top: 5%;
     }
     #oPhone{
-        width:130px;
-        font-size: 12px;
+        width:170px;
+        font-size: 14px;
+        margin-top: 7%;
     }
     #oComplain{
-        width:110px;
-        font-size: 10px;
+        width:170px;
+        font-size: 14px;
+        margin-top: 5%;
+    }
+
+    .description{
+        font-size: 18px;
     }
 }
 
@@ -440,46 +468,42 @@ form{
         height:350px;
     }
     .secondary{
-        height:260px;
+        height:250px;
     }
     .complain{
-        height:200px;
+        height:250px;
     }
-    .primary .contentImage{
-        height:110px;
-    }
+
     .primary .text{
-        top:150px;
-        font-size: 13px;
+        top:10%;
+        font-size: 18px;
     }
-    .secondary .contentImage{
-        height:70px;
-        top:30px;
-    }
+
     .secondary .text{
-        top:120px;
-        font-size: 12px;
+        top:10%;
+        font-size: 16px;
     }
-    .complain .contentImage{
-        height:40px;
-        top:20px;
-    }
+
     .complain .text{
-        top:60px;
-        font-size: 10px;
+        top:10%;
+        font-size: 16px;
     }
 
     #oBook{
-        width:180px;
-        font-size: 15px;
+        width:280px;
+        font-size: 16px;
     }
     #oPhone{
-        width:130px;
-        font-size: 12px;
+        width:170px;
+        font-size: 14px;
     }
     #oComplain{
-        width:110px;
-        font-size: 10px;
+        width:170px;
+        font-size: 12px;
+    }
+
+    .description{
+        font-size: 50px;
     }
 }
 @media (max-width: 1225px) {
@@ -503,49 +527,51 @@ form{
         height:210px;
     }
     .complain{
-        height:150px;
+        height:210px;
     }
     .primary .contentImage{
         height:80px;
     }
     .primary .text{
-        top:120px;
-        padding-bottom: 10px;
-        font-size: 11px;
+        top:10%;
+        font-size: 16px;
     }
     .secondary .contentImage{
         height:40px;
         top:10px;
     }
     .secondary .text{
-        top:65px;
-        font-size: 11px;
+        top:10%;
+        font-size: 14px;
     }
     .complain .contentImage{
         height:30px;
         top:20px;
     }
     .complain .text{
-        top:50px;
-        font-size: 8px;
-        padding-bottom: 5px;
+        top:10%;
+        font-size:14px;
+
     }
 
     #oBook{
+        width:250px;
+        font-size: 14px;
+    }
+    #oPhone{
         width:150px;
         font-size: 12px;
     }
-    #oPhone{
-        width:110px;
-        font-size: 10px;
-    }
     #oComplain{
-        width:90px;
-        font-size: 8px;
+        width:150px;
+        font-size: 12px;
     }
 
-    .description{
+    /*.description{
         font-size: 30px;
+    }*/
+    .description{
+        font-size: 24px;
     }
 }
 
@@ -560,13 +586,13 @@ form{
     }
 
     .primary .text{
-        top:90px;
-        font-size: 11px;
+        top:10%;
+        font-size: 15px;
     }
 
     .secondary .text{
-        top:55px;
-        padding-bottom: 15px;
+        top:10%;
+        font-size: 12px;
     }
 
     .complain .contentImage{
@@ -574,13 +600,16 @@ form{
     }
 
     .complain .text{
-        top:35px;
-        padding-bottom: 1px;
+        top:10%;
+        font-size: 12px;
     }
 
     textarea{
         font-size: 4px;
 
+    }
+    .description{
+        font-size: 20px;
     }
 }
 
@@ -593,6 +622,23 @@ form{
     textarea{
         font-size: 8px;
     }
+    .description{
+        font-size: 16px;
+    }
+    .primary .text{
+        top:10%;
+        font-size: 14px;
+    }
+
+    .secondary .text{
+        top:10%;
+        font-size: 12px;
+    }
+
+    .complain .text{
+        top:10%;
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 815px) {
@@ -601,17 +647,33 @@ form{
         margin-right:3.5%;
     }
     .description{
-        font-size: 20px;
+        font-size: 17px;
     }
     textarea{
         font-size: 14px;
     }
+    .primary .text{
+        top:10%;
+        font-size: 12px;
+    }
 
+    .secondary .text{
+        top:10%;
+        font-size: 10px;
+    }
+
+    .complain .text{
+        top:10%;
+        font-size: 10px;
+    }
 
     #content {
         margin-left: 2%;
         margin-right: 2%;
         width: 100%;
+    }
+    .widget{
+        width: 50%;
     }
 }
 
@@ -631,6 +693,7 @@ form{
     .right-column{
         padding-left: 0px;
         padding-right: 0px;
+
     }
     #footer{
         left:0px;
@@ -640,8 +703,26 @@ form{
     #content {
         margin-left: 0px;
     }
+    .description{
+        font-size: 20px;
+    }
+    .widget{
+        width: 60%;
+    }
+    .primary .text{
+        top:10%;
+        font-size: 13px;
+    }
 
+    .secondary .text{
+        top:5%;
+        font-size: 11px;
+    }
 
+    .complain .text{
+        top:5%;
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 600px) {
@@ -651,7 +732,25 @@ form{
     }
 
     .description{
-        font-size: 10px;
+        font-size: 18px;
+    }
+    .widget{
+        width: 75%;
+    }
+
+    .primary .text{
+        top:10%;
+        font-size: 14px;
+    }
+
+    .secondary .text{
+        top:5%;
+        font-size: 12px;
+    }
+
+    .complain .text{
+        top:5%;
+        font-size: 12px;
     }
 }
 
@@ -660,5 +759,25 @@ form{
         overflow-x: hidden;
       /* width:auto;*/
     }
+    .description{
+        font-size: 16px;
+    }
+    .widget{
+        width: 80%;
+    }
 
+    .primary .text{
+        top:10%;
+        font-size: 11.5px;
+    }
+
+    .secondary .text{
+        top:5%;
+        font-size: 10px;
+    }
+
+    .complain .text{
+        top:5%;
+        font-size: 10px;
+    }
 }
