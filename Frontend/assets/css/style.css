@@ -37,12 +37,12 @@ body{
     margin-right:13.5%;
     color:#e7f2f3;
     font-size:18px;
-    background-color: Transparent;
-    background-repeat:no-repeat;
+    background: Transparent no-repeat;
     border: none;
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    border-radius:6px;
 }
 .header-item:hover{
     transition: background-color 0.3s;
@@ -189,6 +189,7 @@ margin-right: 40px;
 #complain{
      min-width: 440px;
  }
+
 .text{
     background: rgba(255, 255, 255, 0.7);
     padding-left: 15px;
@@ -226,11 +227,20 @@ margin-right: 40px;
     bottom: 0;
     height: 30px;
     right: 0;
+<<<<<<< HEAD
     left: 0;
+=======
+    left: 250px;
+>>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
     color: darkgray;
     text-align: center;
     padding-bottom: 20px;
     z-index: 10000;
+}
+
+#complaint{
+    font-weight:200;
+    font-size:17px;
 }
 
 #background{
@@ -267,10 +277,15 @@ margin-right: 40px;
     left: 8%;
     bottom: 20%;
     color: white;
+<<<<<<< HEAD
     font-size: 60px;
     font-family: "Monotype Corsiva";
 
 
+=======
+    font-size: 40px;
+    font-family: "Monotype Corsiva", serif;
+>>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
 }
 .enabled{
     opacity: 1;
@@ -314,13 +329,14 @@ form{
     transition: all 0s;
 }
 
+
 @media(max-height: 850px){
     input, label, .widget p, .finished, .sum{
         font-size:12px;
     }
 
-    textarea{
-        font-size:14px;
+    #complaint{
+        font-size:13px;
     }
 
     .finished{
@@ -336,9 +352,9 @@ form{
     form{
         margin-top:-2%;
     }
-    textarea{
-        font-size:13px;
-    }
+    #complaint{
+         font-size:12px;
+     }
 
     .finished{
         width:60px;
@@ -359,8 +375,8 @@ form{
     form{
         margin-top:-2.8%;
     }
-    textarea{
-        font-size:12px;
+    #complaint{
+        font-size:11px;
     }
     .finished{
         width:40px;
@@ -383,7 +399,7 @@ form{
     .sum h3{
         font-size:14px;
     }
-    textarea{
+    #complaint{
         font-size:8px;
     }
     .left-panel{
@@ -463,7 +479,9 @@ form{
         max-width:100px;
         font-size:11px;
     }
-
+    #complaint{
+        font-size:15px;
+    }
     .primary{
         height:350px;
     }
@@ -506,6 +524,11 @@ form{
         font-size: 50px;
     }
 }
+@media (max-width: 1420px){
+    #complaint{
+        font-size:13px;
+    }
+}
 @media (max-width: 1225px) {
     .header-item{
         font-size: 16px;
@@ -518,8 +541,9 @@ form{
         max-width:75px;
         font-size:9px;
     }
-
-
+    #complaint{
+        font-size:12px;
+    }
     .primary{
         height:300px;
     }
@@ -574,7 +598,11 @@ form{
         font-size: 24px;
     }
 }
-
+@media(max-width: 1050px){
+    #complaint{
+        font-size:9px;
+    }
+}
 @media (max-width: 1000px) {
     .header-item{
         font-size: 14px;
@@ -603,6 +631,7 @@ form{
         top:10%;
         font-size: 12px;
     }
+<<<<<<< HEAD
 
     textarea{
         font-size: 4px;
@@ -611,6 +640,8 @@ form{
     .description{
         font-size: 20px;
     }
+=======
+>>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
 }
 
 @media (max-width: 900px) {
@@ -619,6 +650,7 @@ form{
         margin-left: 7%;
         margin-right: 7%;
     }
+<<<<<<< HEAD
     textarea{
         font-size: 8px;
     }
@@ -639,6 +671,8 @@ form{
         top:10%;
         font-size: 12px;
     }
+=======
+>>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
 }
 
 @media (max-width: 815px) {
@@ -649,9 +683,10 @@ form{
     .description{
         font-size: 17px;
     }
-    textarea{
-        font-size: 14px;
+    #complaint{
+        font-size:6px;
     }
+<<<<<<< HEAD
     .primary .text{
         top:10%;
         font-size: 12px;
@@ -667,6 +702,8 @@ form{
         font-size: 10px;
     }
 
+=======
+>>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
     #content {
         margin-left: 2%;
         margin-right: 2%;
@@ -691,17 +728,22 @@ form{
         display: none;
     }
     .right-column{
+<<<<<<< HEAD
         padding-left: 0px;
         padding-right: 0px;
 
+=======
+        padding-left: 0;
+        padding-right: 0;
+>>>>>>> ba17c34ec0396cf26e213b8cb1dfc4251a746279
     }
     #footer{
-        left:0px;
+        left:0;
 
     }
 
     #content {
-        margin-left: 0px;
+        margin-left: 0;
     }
     .description{
         font-size: 20px;
@@ -757,7 +799,6 @@ form{
 @media (max-width: 440px) {
    .row{
         overflow-x: hidden;
-      /* width:auto;*/
     }
     .description{
         font-size: 16px;
