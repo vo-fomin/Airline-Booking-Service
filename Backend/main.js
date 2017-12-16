@@ -50,7 +50,7 @@ function startServer(port) {
 
     configureEndpoints(app);
 
-    app.listen(port, function () {
+    app.listen(port, '127.0.0.1', function () {
         console.log('My Application Running on http://localhost:'+port+'/');
     });
 }
