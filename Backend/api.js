@@ -37,6 +37,7 @@ exports.getFlights = function(req, res) {
                     if(!err){
                         console.log(flights_db._id);
                     }
+                    else console.log(err);
                 })
             }
         }
@@ -44,6 +45,7 @@ exports.getFlights = function(req, res) {
     var flights=[], dates=[];
     var obj;
     Flights.find(function(err, flight_ar){
+        if(err)console.log(err);
         for(var i=0, j;i<flight_ar.length;i++) {
             dates=[];
             for(j=0;j<flight_ar[i]._doc.dates.length;j++){
@@ -55,6 +57,7 @@ exports.getFlights = function(req, res) {
             };
             flights = flights.concat(obj);
         }
+        console.log(flights);
         res.send(flights);
     });
 };
@@ -132,6 +135,7 @@ exports.createComplaint = function(req, res){
         if(!err){
             console.log(complaints_db._id);
         }
+        else console.log(err);
     })
 };
 
@@ -145,5 +149,6 @@ exports.createCallOrder = function(req, res){
         if(!err){
             console.log(callOrders_db._id);
         }
+        else console.log(err);
     })
 };
