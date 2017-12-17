@@ -196,8 +196,6 @@ body{
     right:0;
     margin: auto auto 5%;
     padding-bottom: 30px;
-
-  /* border-bottom: dashed 1px gray;*/
 }
 #oBook, #oPhone, #oComplain{
     position:absolute;
@@ -798,5 +796,8 @@ form{
     .complain .text{
         top:5%;
         font-size: 10px;
+    }
+    .blocks{
+        padding-left: 10%!important;
     }
 }
