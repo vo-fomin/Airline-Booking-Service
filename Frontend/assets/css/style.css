@@ -311,7 +311,13 @@ form{
     height: 50%;
     transition: all 0s;
 }
-.blocks{
+.blocks1{
+    padding-left: 10%!important;
+    padding-right: 5%!important;
+    margin-left:0!important;
+    margin-right: 0!important;
+}
+.blocks2{
     padding-left: 5%!important;
     padding-right: 5%!important;
     margin-left:0!important;
