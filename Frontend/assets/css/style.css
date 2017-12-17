@@ -714,8 +714,9 @@ form{
 
     }
     .primary,.complain,.secondary{
-        margin-left:32px;
+        margin-left:35px;
     }
+
 
     #content {
         margin-left: 0;
