@@ -120,14 +120,6 @@ body{
     border:solid 1px darkgray;
 
 }
-/*#content{
-    width: 70%;
-    margin-top: 1%;
-    margin-left: 15%;
-    background: white;
-    border: solid 1px darkgray;
-    margin-bottom: 40px;
-}*/
 
 .option{
     width:100%;
@@ -143,7 +135,9 @@ body{
 }
 
 .bblock{
-margin-right: 40px;
+    left:250px;
+    right:0;
+    margin:auto;
 }
 
 .secondary{
@@ -728,6 +722,7 @@ form{
     .widget{
         width: 60%;
     }
+
     .primary .text{
         top:10%;
         font-size: 13px;
