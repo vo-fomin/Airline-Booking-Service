@@ -704,6 +704,9 @@ form{
     .left-panel {
         display: none;
     }
+    .bblock{
+        left:0;
+    }
     .right-column{
         padding-left: 0;
         padding-right: 0;
