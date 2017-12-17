@@ -37,7 +37,7 @@ function configureEndpoints(app) {
     app.use(express.static(path.join(__dirname, '../Frontend/assets')));
 }
 
-function startServer(port) {
+function startServer(port, ip) {
     var app = express();
 
     app.set('views', path.join(__dirname, 'views'));
@@ -50,8 +50,8 @@ function startServer(port) {
 
     configureEndpoints(app);
 
-    app.listen(port, function () {
-        console.log('My Application Running on http://localhost:'+port+'/');
+    app.listen(port, ip, function () {
+        console.log('My Application Running on http://'+ip+':'+port+'/');
     });
 }
 

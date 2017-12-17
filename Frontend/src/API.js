@@ -1,9 +1,13 @@
-var API_URL = "http://localhost:5050";
+var API_URL = "http://35.205.76.70:5050";
 
 function backendGet(url, callback) {
     $.ajax({
         url: API_URL + url,
         type: 'GET',
+        beforeSend: function (request) {
+            request.setRequestHeader("Authorization", "Negotiate");
+        },
+        async: true,
         success: function(data){
             callback(null, data);
         },
@@ -17,6 +21,10 @@ function backendPost(url, data, callback) {
     $.ajax({
         url: API_URL + url,
         type: 'POST',
+        beforeSend: function (request) {
+            request.setRequestHeader("Authorization", "Negotiate");
+        },
+        async: true,
         contentType : 'application/json',
         data: JSON.stringify(data),
         success: function(data){
