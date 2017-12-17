@@ -130,14 +130,15 @@ body{
     height:400px;
     background-image: url(../images/tr11.png);
     width:90%;
-    margin: 40px;
+    /*margin: 40px;*/
     border-radius: 15px;
 }
 
 .bblock{
-    left:250px;
+    left:0;
     right:0;
     margin:auto;
+    padding-left:0!important;
 }
 
 .secondary{
@@ -703,9 +704,6 @@ form{
 
     .left-panel {
         display: none;
-    }
-    .bblock{
-        left:0;
     }
     .right-column{
         padding-left: 0;
