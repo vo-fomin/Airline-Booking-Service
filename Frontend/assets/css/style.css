@@ -144,14 +144,14 @@ body{
 .secondary{
     height:250px;
     background-image: url(../images/tr2.png);
-    width:38%;
-    margin: 20px 2% 40px 10%;
+    width:80%;
+    margin: 20px 2% 40px 15%;
     border-radius: 15px;
 }
 .complain{
     height:250px;
     background-image: url(../images/tr4.png);
-    width:38%;
+    width:80%;
     margin: 20px 10% 40px 2%;
     border-radius: 15px;
 }
@@ -713,9 +713,6 @@ form{
     #footer{
         left:0;
 
-    }
-    .primary,.secondary{
-        margin-left:35px;
     }
 
 
