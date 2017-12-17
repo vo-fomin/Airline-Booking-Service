@@ -1,4 +1,4 @@
-var API_URL = "http://35.205.76.70:5050";
+var API_URL = "http://www.ua-abs.tk:5050";
 
 function backendGet(url, callback) {
     $.ajax({
