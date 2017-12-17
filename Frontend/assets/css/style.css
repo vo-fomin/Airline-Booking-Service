@@ -129,7 +129,6 @@ body{
 .primary{
     height:400px;
     background-image: url(../images/tr11.png);
-    width:90%;
     margin-top: 40px;
     margin-bottom: 40px;
     border-radius: 15px;
@@ -145,19 +144,15 @@ body{
 .secondary{
     height:250px;
     background-image: url(../images/tr2.png);
-    width:80%;
     margin-top: 20px;
     margin-bottom: 40px;
-    margin-right:2%;
     border-radius: 15px;
 }
 .complain{
     height:250px;
     background-image: url(../images/tr4.png);
-    width:80%;
     margin-top: 20px;
     margin-bottom:40px;
-    margin-left:2%;
     border-radius: 15px;
 }
 .primary .contentImage{
@@ -317,8 +312,10 @@ form{
     transition: all 0s;
 }
 .blocks{
-    padding-left: 10%!important;
-    padding-right: 10%!important;
+    padding-left: 5%!important;
+    padding-right: 5%!important;
+    margin-left:0!important;
+    margin-right: 0!important;
 }
 
 @media(max-height: 850px){
