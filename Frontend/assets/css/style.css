@@ -311,7 +311,9 @@ form{
     height: 50%;
     transition: all 0s;
 }
-
+.blocks{
+    padding-left: 10%!important;
+}
 
 @media(max-height: 850px){
     input, label, .widget p, .finished, .sum{
@@ -796,8 +798,5 @@ form{
     .complain .text{
         top:5%;
         font-size: 10px;
-    }
-    .blocks{
-        padding-left: 10%!important;
     }
 }
