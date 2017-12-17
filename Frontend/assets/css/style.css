@@ -312,7 +312,7 @@ form{
     transition: all 0s;
 }
 .blocks1{
-    padding-left: 10%!important;
+    padding-left: 5%!important;
     padding-right: 5%!important;
     margin-left:0!important;
     margin-right: 0!important;
@@ -714,6 +714,9 @@ form{
 
     .left-panel {
         display: none;
+    }
+    .blocks1{
+        padding-left: 10%!important;
     }
     .right-column{
         padding-left: 0;
