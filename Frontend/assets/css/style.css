@@ -130,7 +130,7 @@ body{
     height:400px;
     background-image: url(../images/tr11.png);
     width:90%;
-    margin: 40px;
+    margin: 40px 5%;
     border-radius: 15px;
 }
 
@@ -144,15 +144,15 @@ body{
 .secondary{
     height:250px;
     background-image: url(../images/tr2.png);
-    width:90%;
-    margin: 20px 25px 40px;
+    width:38%;
+    margin: 20px 2% 40px 10%;
     border-radius: 15px;
 }
 .complain{
     height:250px;
     background-image: url(../images/tr4.png);
-    width:90%;
-    margin: 20px 70px 40px -10px;
+    width:38%;
+    margin: 20px 10% 40px 2%;
     border-radius: 15px;
 }
 .primary .contentImage{
